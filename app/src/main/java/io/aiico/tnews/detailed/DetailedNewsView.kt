@@ -13,4 +13,6 @@ interface DetailedNewsView : MvpView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun showError()
+
+    fun showLoading(isLoading: Boolean)
 }

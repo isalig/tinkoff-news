@@ -14,8 +14,14 @@ class DetailedNewsPresenter @Inject constructor(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        onRefresh()
+    }
+
+    fun onRefresh() {
         newsInteractor
             .getDetailedNews(newsId)
+            .doOnSubscribe { viewState.showLoading(true) }
+            .doAfterTerminate { viewState.showLoading(false) }
             .subscribe(
                 { details -> viewState.showNewsDetails(details) },
                 { viewState.showError() }

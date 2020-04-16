@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import io.aiico.tnews.detailed.DetailedNewsFragment
 import io.aiico.tnews.list.NewsTitlesFragment
 
@@ -54,12 +55,6 @@ class MainActivity : AppCompatActivity(), CommonDependenciesReceiver, NewsNaviga
     override fun navigateToDetails(id: String) {
         supportFragmentManager
             .beginTransaction()
-            .setCustomAnimations(
-                android.R.anim.fade_in,
-                android.R.anim.fade_out,
-                android.R.anim.fade_in,
-                android.R.anim.fade_out
-            )
             .replace(android.R.id.content, DetailedNewsFragment.newInstance(id))
             .addToBackStack(null)
             .commit()

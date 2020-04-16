@@ -13,8 +13,14 @@ class NewsTitlesPresenter @Inject constructor(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        onRefresh()
+    }
+
+    fun onRefresh() {
         newsInteractor
             .getAllNews()
+            .doOnSubscribe { viewState.showLoading(true) }
+            .doAfterTerminate { viewState.showLoading(false) }
             .subscribe(
                 { titles -> viewState.showNewsTitles(titles) },
                 { viewState.showError() }

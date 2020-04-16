@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Тинькофф Новости</string>
     <string name="Details">Детали</string>
+    <string name="error_message">Произошла ошибка</string>
+    <string name="retry">Повторить</string>
 </resources>

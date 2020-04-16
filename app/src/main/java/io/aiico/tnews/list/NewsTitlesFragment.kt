@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import io.aiico.tnews.NewsFeatureClient
 import io.aiico.tnews.NewsFeatureComponent
 import io.aiico.tnews.NewsNavigator
@@ -40,6 +41,9 @@ class NewsTitlesFragment : MvpAppCompatFragment(), NewsTitlesView, NewsFeatureCl
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initTitlesRecyclerView()
+        titlesRefreshLayout.setOnRefreshListener {
+            presenter.onRefresh()
+        }
     }
 
     private fun initTitlesRecyclerView() {
@@ -53,7 +57,14 @@ class NewsTitlesFragment : MvpAppCompatFragment(), NewsTitlesView, NewsFeatureCl
     }
 
     override fun showError() {
+        Snackbar.make(newsTitlesRecyclerView, getString(R.string.error_message), Snackbar.LENGTH_INDEFINITE)
+            .setAction(R.string.retry) {
+                presenter.onRefresh()
+            }.show()
+    }
 
+    override fun showLoading(isLoading: Boolean) {
+        titlesRefreshLayout.isRefreshing = isLoading
     }
 
     companion object {
