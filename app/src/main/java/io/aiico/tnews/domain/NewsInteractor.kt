@@ -18,7 +18,6 @@ class NewsInteractor @Inject constructor(
         } else {
             getNewsList()
         }
-            .observeOn(AndroidSchedulers.mainThread())
 
     private fun syncNewsList(): Single<List<News>> =
         newsApi
@@ -56,7 +55,6 @@ class NewsInteractor @Inject constructor(
         } else {
             getNews(id)
         }
-            .observeOn(AndroidSchedulers.mainThread())
 
     private fun syncNews(id: String): Single<News> =
         newsApi

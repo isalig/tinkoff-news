@@ -3,6 +3,7 @@ package io.aiico.tnews.presentation.detailed
 import io.aiico.tnews.presentation.BaseMvpPresenter
 import io.aiico.tnews.domain.NewsInteractor
 import io.aiico.tnews.presentation.addTo
+import io.reactivex.android.schedulers.AndroidSchedulers
 import moxy.InjectViewState
 import javax.inject.Inject
 
@@ -26,6 +27,7 @@ class DetailedNewsPresenter @Inject constructor(
             .getDetailedNews(newsId, forceRefresh)
             .doOnSubscribe { viewState.showLoading(true) }
             .doAfterTerminate { viewState.showLoading(false) }
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { details -> viewState.showNewsDetails(details) },
                 { viewState.showError() }

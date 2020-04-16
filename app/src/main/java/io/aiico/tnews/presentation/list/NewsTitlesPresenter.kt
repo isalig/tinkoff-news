@@ -5,6 +5,7 @@ import io.aiico.tnews.presentation.BaseMvpPresenter
 import io.aiico.tnews.domain.NewsInteractor
 import io.aiico.tnews.presentation.navigation.NewsNavigator
 import io.aiico.tnews.presentation.addTo
+import io.reactivex.android.schedulers.AndroidSchedulers
 import moxy.InjectViewState
 import javax.inject.Inject
 
@@ -32,6 +33,7 @@ class NewsTitlesPresenter @Inject constructor(
             .getNewsList(forceRefresh)
             .doOnSubscribe { viewState.showLoading(true) }
             .doAfterTerminate { viewState.showLoading(false) }
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { news -> viewState.showNewsTitles(news) },
                 { error ->
