@@ -3,8 +3,10 @@ package io.aiico.tnews.presentation
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
+import android.util.Log
 import io.aiico.tnews.presentation.di.CommonDependenciesReceiver
 import io.aiico.tnews.presentation.di.component.AppComponent
+import io.reactivex.plugins.RxJavaPlugins
 
 class NewsApp : Application() {
 
@@ -23,5 +25,9 @@ class NewsApp : Application() {
         super.onCreate()
         appComponent = AppComponent.create(this)
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks)
+        RxJavaPlugins.setErrorHandler { throwable ->
+            Log.e("Tinkoff", throwable.message, throwable)
+            showToast(throwable.message ?: "Unknown error, see logs")
+        }
     }
 }

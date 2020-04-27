@@ -29,7 +29,11 @@ fun String.asSpannedHtml(): Spanned =
     }
 
 fun Context.showToast(messageResId: Int) {
+    showToast(getString(messageResId))
+}
+
+fun Context.showToast(message: String) {
     Toast
-        .makeText(this, getString(messageResId), Toast.LENGTH_SHORT)
+        .makeText(this, message, Toast.LENGTH_SHORT)
         .show()
 }

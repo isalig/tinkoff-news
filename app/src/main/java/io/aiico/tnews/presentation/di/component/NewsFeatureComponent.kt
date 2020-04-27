@@ -3,10 +3,8 @@ package io.aiico.tnews.presentation.di.component
 import dagger.Component
 import io.aiico.tnews.presentation.MainActivity
 import io.aiico.tnews.presentation.di.CommonDependencies
-import io.aiico.tnews.presentation.di.scope.PerFeature
 import io.aiico.tnews.presentation.list.NewsTitlesFragment
 
-@PerFeature
 @Component(dependencies = [CommonDependencies::class])
 interface NewsFeatureComponent : CommonDependencies {
 
