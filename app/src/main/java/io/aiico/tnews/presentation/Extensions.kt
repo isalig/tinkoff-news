@@ -37,3 +37,9 @@ fun Context.showToast(message: String) {
         .makeText(this, message, Toast.LENGTH_SHORT)
         .show()
 }
+
+var View.isVisible: Boolean
+    set(value) {
+        visibility = if (value) View.VISIBLE else View.GONE
+    }
+    get() = visibility == View.VISIBLE

@@ -1,23 +1,26 @@
 package io.aiico.tnews.presentation.list
 
-import android.util.Log
-import io.aiico.tnews.presentation.BaseMvpPresenter
 import io.aiico.tnews.domain.NewsInteractor
-import io.aiico.tnews.presentation.navigation.NewsNavigator
+import io.aiico.tnews.presentation.BaseMvpPresenter
 import io.aiico.tnews.presentation.addTo
-import io.reactivex.android.schedulers.AndroidSchedulers
+import io.aiico.tnews.presentation.navigation.NewsNavigator
 import moxy.InjectViewState
 import javax.inject.Inject
 
 @InjectViewState
 class NewsTitlesPresenter @Inject constructor(
+    private val titlesStateMachine: TitlesStateMachine,
     private val newsInteractor: NewsInteractor,
-    private val navigator: NewsNavigator
+    private val navigator: NewsNavigator,
+    private val stateMachine: TitlesStateMachine
 ) : BaseMvpPresenter<NewsTitlesView>() {
 
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
+    init {
         loadNewsTitles(false)
+    }
+
+    override fun onFirstViewAttach() {
+        viewState.applyState(stateMachine.state)
     }
 
     fun onTitleClick(titleId: String) {
@@ -31,15 +34,21 @@ class NewsTitlesPresenter @Inject constructor(
     private fun loadNewsTitles(forceRefresh: Boolean) {
         newsInteractor
             .getNewsList(forceRefresh)
-            .doOnSubscribe { viewState.showLoading(true) }
-            .doAfterTerminate { viewState.showLoading(false) }
-            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe {
+                updateState { stateMachine.onLoading() }
+            }
             .subscribe(
-                { news -> viewState.showNewsTitles(news) },
+                { news ->
+                    updateState { stateMachine -> stateMachine.onLoaded(news) }
+                },
                 { error ->
-                    viewState.showError()
-                    Log.e("NewsTitlesPresenter", "Error", error)
+                    updateState { stateMachine -> stateMachine.onError(error.message ?: "Unknown error") }
                 }
             ).addTo(compositeDisposable)
+    }
+
+    private inline fun updateState(stateAction: (TitlesStateMachine) -> Unit) {
+        stateAction.invoke(stateMachine)
+        viewState.applyState(stateMachine.state)
     }
 }

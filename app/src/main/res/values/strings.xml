@@ -2,4 +2,7 @@
     <string name="app_name">Тинькофф Новости</string>
     <string name="Details">Детали</string>
     <string name="loading_failed_message">Не удалось загрузить</string>
+    <string name="retry">Retry</string>
+    <string name="loading">Loading</string>
+    <string name="titles_empty_list_placeholder">No titles found</string>
 </resources>

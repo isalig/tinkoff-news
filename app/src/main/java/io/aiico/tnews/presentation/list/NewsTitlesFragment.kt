@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import io.aiico.tnews.domain.News
+import io.aiico.tnews.R
 import io.aiico.tnews.presentation.di.NewsFeatureClient
 import io.aiico.tnews.presentation.di.component.NewsFeatureComponent
-import io.aiico.tnews.R
+import io.aiico.tnews.presentation.isVisible
 import io.aiico.tnews.presentation.list.adapter.NewsTitleAdapter
 import io.aiico.tnews.presentation.showToast
 import kotlinx.android.synthetic.main.fragment_news_titles.*
@@ -18,8 +18,7 @@ import moxy.ktx.moxyPresenter
 import javax.inject.Inject
 import javax.inject.Provider
 
-class NewsTitlesFragment : MvpAppCompatFragment(), NewsTitlesView,
-    NewsFeatureClient {
+class NewsTitlesFragment : MvpAppCompatFragment(), NewsTitlesView, NewsFeatureClient {
 
     @Inject
     lateinit var presenterProvider: Provider<NewsTitlesPresenter>
@@ -45,6 +44,12 @@ class NewsTitlesFragment : MvpAppCompatFragment(), NewsTitlesView,
         titlesRefreshLayout.setOnRefreshListener {
             presenter.onRefresh()
         }
+        retryButton.setOnClickListener {
+            presenter.onRefresh()
+        }
+        retryEmptyButton.setOnClickListener {
+            presenter.onRefresh()
+        }
     }
 
     private fun initTitlesRecyclerView() {
@@ -53,16 +58,21 @@ class NewsTitlesFragment : MvpAppCompatFragment(), NewsTitlesView,
         newsTitlesRecyclerView.adapter = newsTitleAdapter
     }
 
-    override fun showNewsTitles(titles: List<News>) {
-        newsTitleAdapter.submitList(titles)
-    }
+    override fun applyState(state: NewsTitlesViewState) {
+        with(state) {
+            titlesRefreshLayout.isVisible = showList
+            titlesRefreshLayout.isRefreshing = showLoading
+            newsTitleAdapter.submitList(titles)
 
-    override fun showError() {
-        context?.showToast(R.string.loading_failed_message)
-    }
+            errorLayout.isVisible = showEmptyError
+            errorMessageTextView.text = errorMessage
 
-    override fun showLoading(isLoading: Boolean) {
-        titlesRefreshLayout.isRefreshing = isLoading
+            loadingPlaceholderTextView.isVisible = showEmptyLoading
+            listPlaceholderLayout.isVisible = showListPlaceholder
+            if (showError) {
+                context?.showToast(state.errorMessage)
+            }
+        }
     }
 
     companion object {
