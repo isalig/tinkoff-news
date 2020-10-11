@@ -33,7 +33,7 @@ class NewsTitlesPresenter @Inject constructor(
 
     private fun loadNewsTitles(forceRefresh: Boolean) {
         newsInteractor
-            .getNewsList(forceRefresh)
+            .getArticles()
             .doOnSubscribe {
                 updateState { stateMachine.onLoading() }
             }

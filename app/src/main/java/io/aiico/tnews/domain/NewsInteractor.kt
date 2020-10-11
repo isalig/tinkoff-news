@@ -7,21 +7,13 @@ import javax.inject.Inject
 
 class NewsInteractor @Inject constructor(private val newsRepository: NewsRepository) {
 
-    fun getNewsList(forceRefresh: Boolean = false): Single<List<News>> =
-        if (forceRefresh) {
-            newsRepository.syncNewsList()
-        } else {
-            newsRepository.getNewsList()
-        }
+    fun getArticles(): Single<List<News>> =
+            newsRepository.loadNews()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
-    fun getDetailedNews(id: String, forceRefresh: Boolean = false): Single<News> =
-        if (forceRefresh) {
-            newsRepository.syncNews(id)
-        } else {
-            newsRepository.getNews(id)
-        }
+    fun getArticle(id: String): Single<News> =
+            newsRepository.loadArticle(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 }
