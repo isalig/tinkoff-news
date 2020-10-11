@@ -24,7 +24,7 @@ class DetailedNewsPresenter @Inject constructor(
 
     private fun loadDetails(forceRefresh: Boolean) {
         newsInteractor
-            .getDetailedNews(newsId, forceRefresh)
+            .getArticle(newsId)
             .doOnSubscribe { viewState.showLoading(true) }
             .doAfterTerminate { viewState.showLoading(false) }
             .observeOn(AndroidSchedulers.mainThread())
