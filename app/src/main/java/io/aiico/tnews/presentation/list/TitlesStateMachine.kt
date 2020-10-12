@@ -1,6 +1,6 @@
 package io.aiico.tnews.presentation.list
 
-import io.aiico.tnews.domain.News
+import io.aiico.tnews.domain.model.Article
 import javax.inject.Inject
 
 class TitlesStateMachine @Inject constructor() {
@@ -22,7 +22,7 @@ class TitlesStateMachine @Inject constructor() {
         return state
     }
 
-    fun onLoaded(titles: List<News>): NewsTitlesViewState {
+    fun onLoaded(titles: List<Article>): NewsTitlesViewState {
         state = if (titles.isNotEmpty()) {
             Loaded(titles)
         } else {

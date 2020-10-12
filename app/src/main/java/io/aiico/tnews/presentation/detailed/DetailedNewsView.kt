@@ -1,6 +1,6 @@
 package io.aiico.tnews.presentation.detailed
 
-import io.aiico.tnews.domain.News
+import io.aiico.tnews.domain.model.Article
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.OneExecutionStateStrategy
@@ -9,7 +9,7 @@ import moxy.viewstate.strategy.StateStrategyType
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface DetailedNewsView : MvpView {
 
-    fun showNewsDetails(news: News)
+    fun showNewsDetails(article: Article)
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun showError()
