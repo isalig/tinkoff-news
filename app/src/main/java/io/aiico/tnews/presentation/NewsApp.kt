@@ -10,24 +10,24 @@ import io.reactivex.plugins.RxJavaPlugins
 
 class NewsApp : Application() {
 
-    private lateinit var appComponent: AppComponent
+  private lateinit var appComponent: AppComponent
 
-    private val activityLifecycleCallbacks = object :
-        SimpleActivityLifecycleCallbacks {
-        override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-            if (activity is CommonDependenciesReceiver) {
-                activity.onProvideCommonDependencies(appComponent)
-            }
-        }
+  private val activityLifecycleCallbacks = object :
+    SimpleActivityLifecycleCallbacks {
+    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+      if (activity is CommonDependenciesReceiver) {
+        activity.onProvideCommonDependencies(appComponent)
+      }
     }
+  }
 
-    override fun onCreate() {
-        super.onCreate()
-        appComponent = AppComponent.create(this)
-        registerActivityLifecycleCallbacks(activityLifecycleCallbacks)
-        RxJavaPlugins.setErrorHandler { throwable ->
-            Log.e("Tinkoff", throwable.message, throwable)
-            showToast(throwable.message ?: "Unknown error, see logs")
-        }
+  override fun onCreate() {
+    super.onCreate()
+    appComponent = AppComponent.create(this)
+    registerActivityLifecycleCallbacks(activityLifecycleCallbacks)
+    RxJavaPlugins.setErrorHandler { throwable ->
+      Log.e("Tinkoff", throwable.message, throwable)
+      showToast(throwable.message ?: "Unknown error, see logs")
     }
+  }
 }

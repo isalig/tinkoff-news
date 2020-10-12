@@ -6,9 +6,9 @@ import moxy.MvpView
 
 abstract class BaseMvpPresenter<V : MvpView> : MvpPresenter<V>() {
 
-    protected val compositeDisposable = CompositeDisposable()
+  protected val compositeDisposable = CompositeDisposable()
 
-    override fun onDestroy() {
-        compositeDisposable.clear()
-    }
+  override fun onDestroy() {
+    compositeDisposable.clear()
+  }
 }

@@ -16,41 +16,41 @@ class NewsTitlesPresenter @Inject constructor(
     private val stateMachine: TitlesStateMachine
 ) : BaseMvpPresenter<NewsTitlesView>() {
 
-    init {
-        loadNewsTitles(false)
-    }
+  init {
+    loadNewsTitles(false)
+  }
 
-    override fun onFirstViewAttach() {
-        viewState.applyState(stateMachine.state)
-    }
+  override fun onFirstViewAttach() {
+    viewState.applyState(stateMachine.state)
+  }
 
-    fun onTitleClick(titleId: String) {
-        navigator.showDetailedNews(titleId)
-    }
+  fun onTitleClick(titleId: String) {
+    navigator.showDetailedNews(titleId)
+  }
 
-    fun onRefresh() {
-        loadNewsTitles(true)
-    }
+  fun onRefresh() {
+    loadNewsTitles(true)
+  }
 
-    private fun loadNewsTitles(forceRefresh: Boolean) {
-        newsInteractor
-            .getArticles()
-            .doOnSubscribe {
-                updateState { stateMachine.onLoading() }
-            }
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                { news ->
-                    updateState { stateMachine -> stateMachine.onLoaded(news) }
-                },
-                { error ->
-                    updateState { stateMachine -> stateMachine.onError(error.message ?: "Unknown error") }
-                }
-            ).addTo(compositeDisposable)
-    }
+  private fun loadNewsTitles(forceRefresh: Boolean) {
+    newsInteractor
+      .getArticles()
+      .doOnSubscribe {
+        updateState { stateMachine.onLoading() }
+      }
+      .observeOn(AndroidSchedulers.mainThread())
+      .subscribe(
+          { news ->
+              updateState { stateMachine -> stateMachine.onLoaded(news) }
+          },
+          { error ->
+              updateState { stateMachine -> stateMachine.onError(error.message ?: "Unknown error") }
+          }
+      ).addTo(compositeDisposable)
+  }
 
-    private inline fun updateState(stateAction: (TitlesStateMachine) -> Unit) {
-        stateAction.invoke(stateMachine)
-        viewState.applyState(stateMachine.state)
-    }
+  private inline fun updateState(stateAction: (TitlesStateMachine) -> Unit) {
+    stateAction.invoke(stateMachine)
+    viewState.applyState(stateMachine.state)
+  }
 }

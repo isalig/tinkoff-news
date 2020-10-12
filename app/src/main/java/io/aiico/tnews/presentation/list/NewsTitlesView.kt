@@ -7,5 +7,5 @@ import moxy.viewstate.strategy.StateStrategyType
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface NewsTitlesView : MvpView {
 
-    fun applyState(state: NewsTitlesViewState)
+  fun applyState(state: NewsTitlesViewState)
 }

@@ -8,13 +8,13 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.list_item_news_title.*
 
 class NewsTitleViewHolder(
-    override val containerView: View
+  override val containerView: View
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-    fun bind(article: Article) {
-        with(article) {
-            newsTitleTextView.text = title.asSpannedHtml()
-            newsDateTextView.text = createdTime
-        }
+  fun bind(article: Article) {
+    with(article) {
+      newsTitleTextView.text = title.asSpannedHtml()
+      newsDateTextView.text = createdTime
     }
+  }
 }

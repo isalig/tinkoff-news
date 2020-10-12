@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface NewsApi {
 
-    @GET("getArticles")
-    fun getNewsTitles(): Single<NewsResponse>
+  @GET("getArticles")
+  fun getNewsTitles(): Single<NewsResponse>
 }

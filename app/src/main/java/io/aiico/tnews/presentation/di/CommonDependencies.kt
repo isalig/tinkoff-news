@@ -5,7 +5,7 @@ import io.aiico.tnews.presentation.navigation.NewsNavigator
 
 interface CommonDependencies {
 
-    fun provideNewsApi(): NewsApi
+  fun provideNewsApi(): NewsApi
 
-    fun provideNavigator(): NewsNavigator
+  fun provideNavigator(): NewsNavigator
 }

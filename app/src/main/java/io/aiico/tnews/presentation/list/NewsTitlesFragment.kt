@@ -20,63 +20,63 @@ import javax.inject.Provider
 
 class NewsTitlesFragment : MvpAppCompatFragment(), NewsTitlesView, NewsFeatureClient {
 
-    @Inject
-    lateinit var presenterProvider: Provider<NewsTitlesPresenter>
-    private val presenter: NewsTitlesPresenter by moxyPresenter {
-        presenterProvider.get()
+  @Inject
+  lateinit var presenterProvider: Provider<NewsTitlesPresenter>
+  private val presenter: NewsTitlesPresenter by moxyPresenter {
+    presenterProvider.get()
+  }
+
+  private val newsTitleAdapter = NewsTitleAdapter { id ->
+    presenter.onTitleClick(id)
+  }
+
+  override fun dispatchInjection(component: NewsFeatureComponent) {
+    component.inject(this)
+  }
+
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    return inflater.inflate(R.layout.fragment_news_titles, container, false)
+  }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    initTitlesRecyclerView()
+    titlesRefreshLayout.setOnRefreshListener {
+      presenter.onRefresh()
     }
-
-    private val newsTitleAdapter = NewsTitleAdapter { id ->
-        presenter.onTitleClick(id)
+    retryButton.setOnClickListener {
+      presenter.onRefresh()
     }
-
-    override fun dispatchInjection(component: NewsFeatureComponent) {
-        component.inject(this)
+    retryEmptyButton.setOnClickListener {
+      presenter.onRefresh()
     }
+  }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_news_titles, container, false)
+  private fun initTitlesRecyclerView() {
+    val dividerDecoration = DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
+    newsTitlesRecyclerView.addItemDecoration(dividerDecoration)
+    newsTitlesRecyclerView.adapter = newsTitleAdapter
+  }
+
+  override fun applyState(state: NewsTitlesViewState) {
+    with(state) {
+      titlesRefreshLayout.isVisible = showList
+      titlesRefreshLayout.isRefreshing = showLoading
+      newsTitleAdapter.submitList(titles)
+
+      errorLayout.isVisible = showEmptyError
+      errorMessageTextView.text = errorMessage
+
+      loadingPlaceholderTextView.isVisible = showEmptyLoading
+      listPlaceholderLayout.isVisible = showListPlaceholder
+      if (showError) {
+        context?.showToast(state.errorMessage)
+      }
     }
+  }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initTitlesRecyclerView()
-        titlesRefreshLayout.setOnRefreshListener {
-            presenter.onRefresh()
-        }
-        retryButton.setOnClickListener {
-            presenter.onRefresh()
-        }
-        retryEmptyButton.setOnClickListener {
-            presenter.onRefresh()
-        }
-    }
+  companion object {
 
-    private fun initTitlesRecyclerView() {
-        val dividerDecoration = DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
-        newsTitlesRecyclerView.addItemDecoration(dividerDecoration)
-        newsTitlesRecyclerView.adapter = newsTitleAdapter
-    }
-
-    override fun applyState(state: NewsTitlesViewState) {
-        with(state) {
-            titlesRefreshLayout.isVisible = showList
-            titlesRefreshLayout.isRefreshing = showLoading
-            newsTitleAdapter.submitList(titles)
-
-            errorLayout.isVisible = showEmptyError
-            errorMessageTextView.text = errorMessage
-
-            loadingPlaceholderTextView.isVisible = showEmptyLoading
-            listPlaceholderLayout.isVisible = showListPlaceholder
-            if (showError) {
-                context?.showToast(state.errorMessage)
-            }
-        }
-    }
-
-    companion object {
-
-        fun newInstance() = NewsTitlesFragment()
-    }
+    fun newInstance() = NewsTitlesFragment()
+  }
 }

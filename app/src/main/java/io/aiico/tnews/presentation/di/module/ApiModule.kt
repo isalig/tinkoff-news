@@ -12,19 +12,18 @@ import javax.inject.Singleton
 @Module
 object ApiModule {
 
-    @Provides
-    @JvmStatic
-    fun provideRetrofit(): Retrofit =
-        Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .baseUrl(BuildConfig.API_BASE_URL)
-            .build()
+  @Provides
+  @JvmStatic
+  fun provideRetrofit(): Retrofit =
+    Retrofit.Builder()
+      .addConverterFactory(GsonConverterFactory.create())
+      .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+      .baseUrl(BuildConfig.API_BASE_URL)
+      .build()
 
-
-    @Singleton
-    @Provides
-    @JvmStatic
-    fun provideCurrencyApi(retrofit: Retrofit): NewsApi =
-        retrofit.create(NewsApi::class.java)
+  @Singleton
+  @Provides
+  @JvmStatic
+  fun provideCurrencyApi(retrofit: Retrofit): NewsApi =
+    retrofit.create(NewsApi::class.java)
 }

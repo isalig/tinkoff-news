@@ -8,8 +8,8 @@ import javax.inject.Singleton
 @Module
 object NavigationModule {
 
-    @Singleton
-    @JvmStatic
-    @Provides
-    fun provideNavigator() = NewsNavigator()
+  @Singleton
+  @JvmStatic
+  @Provides
+  fun provideNavigator() = NewsNavigator()
 }

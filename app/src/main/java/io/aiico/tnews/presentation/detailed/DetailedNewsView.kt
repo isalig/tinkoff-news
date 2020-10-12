@@ -9,10 +9,10 @@ import moxy.viewstate.strategy.StateStrategyType
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface DetailedNewsView : MvpView {
 
-    fun showNewsDetails(article: Article)
+  fun showNewsDetails(article: Article)
 
-    @StateStrategyType(OneExecutionStateStrategy::class)
-    fun showError()
+  @StateStrategyType(OneExecutionStateStrategy::class)
+  fun showError()
 
-    fun showLoading(isLoading: Boolean)
+  fun showLoading(isLoading: Boolean)
 }
