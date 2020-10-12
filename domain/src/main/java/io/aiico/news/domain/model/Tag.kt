@@ -1,4 +1,4 @@
-package io.aiico.tnews.domain.model
+package io.aiico.news.domain.model
 
 data class Tag(
         val id: String,

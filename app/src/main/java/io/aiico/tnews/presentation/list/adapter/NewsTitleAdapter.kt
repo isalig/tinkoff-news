@@ -3,7 +3,7 @@ package io.aiico.tnews.presentation.list.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.aiico.tnews.R
-import io.aiico.tnews.domain.model.Article
+import io.aiico.news.domain.model.Article
 import io.aiico.tnews.presentation.inflateViewHolder
 
 class NewsTitleAdapter(private inline val onClick: (id: String) -> Unit) : RecyclerView.Adapter<NewsTitleViewHolder>() {

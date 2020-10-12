@@ -1,2 +1,3 @@
 rootProject.name='Tinkoff News'
 include ':app'
+include ':domain'

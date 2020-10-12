@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import io.aiico.tnews.presentation.di.NewsFeatureClient
 import io.aiico.tnews.presentation.di.component.NewsFeatureComponent
 import io.aiico.tnews.R
-import io.aiico.tnews.domain.model.Article
+import io.aiico.news.domain.model.Article
 import io.aiico.tnews.presentation.asSpannedHtml
 import io.aiico.tnews.presentation.di.component.DetailedNewsComponent
 import io.aiico.tnews.presentation.showToast

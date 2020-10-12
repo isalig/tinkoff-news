@@ -1,6 +1,6 @@
 package io.aiico.tnews.presentation.list
 
-import io.aiico.tnews.domain.model.Article
+import io.aiico.news.domain.model.Article
 import javax.inject.Inject
 
 class TitlesStateMachine @Inject constructor() {
