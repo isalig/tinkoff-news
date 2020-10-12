@@ -6,7 +6,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class NewsInteractor @Inject constructor(private val newsRepository: NewsRepository) {
+class NewsInteractor @Inject constructor(private val newsRepository: ArticlesRepository) {
 
     fun getArticles(): Single<List<Article>> =
             newsRepository.loadArticles()

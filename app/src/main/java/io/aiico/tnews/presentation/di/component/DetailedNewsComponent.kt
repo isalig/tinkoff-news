@@ -4,8 +4,9 @@ import dagger.BindsInstance
 import dagger.Component
 import io.aiico.tnews.presentation.detailed.DetailedNewsFragment
 import io.aiico.tnews.presentation.di.CommonDependencies
+import io.aiico.tnews.presentation.di.module.DataModule
 
-@Component(dependencies = [CommonDependencies::class])
+@Component(dependencies = [CommonDependencies::class], modules = [DataModule::class])
 interface DetailedNewsComponent {
 
     fun inject(detailsFragment: DetailedNewsFragment)
