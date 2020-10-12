@@ -1,18 +1,5 @@
 package io.aiico.tnews.domain
 
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.never
-import com.nhaarman.mockitokotlin2.times
-import com.nhaarman.mockitokotlin2.verify
-import io.aiico.tnews.data.api.NewsApi
-import io.aiico.tnews.data.api.NewsDate
-import io.aiico.tnews.data.api.NewsResponse
-import io.aiico.tnews.data.api.NewsTitle
-import io.aiico.tnews.data.database.NewsDao
-import io.reactivex.Single
-import io.reactivex.observers.TestObserver
-import org.junit.Test
-
 /***
  * Unit test examples. Not full coverage.
  */

@@ -1,4 +1,4 @@
-package io.aiico.tnews.data.api
+package io.aiico.tnews.data.model
 
 import com.google.gson.annotations.SerializedName
 
