@@ -2,15 +2,15 @@ package io.aiico.tnews.presentation.list.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import io.aiico.tnews.domain.News
 import io.aiico.tnews.R
+import io.aiico.tnews.domain.model.Article
 import io.aiico.tnews.presentation.inflateViewHolder
 
 class NewsTitleAdapter(private inline val onClick: (id: String) -> Unit) : RecyclerView.Adapter<NewsTitleViewHolder>() {
 
-    private val titles = ArrayList<News>()
+    private val titles = ArrayList<Article>()
 
-    fun submitList(newNewsTitles: List<News>) {
+    fun submitList(newNewsTitles: List<Article>) {
         titles.clear()
         titles.addAll(newNewsTitles)
         notifyDataSetChanged()
