@@ -1,6 +1,6 @@
 package io.aiico.tnews.presentation.detailed
 
-import io.aiico.tnews.domain.model.Article
+import io.aiico.news.domain.model.Article
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.OneExecutionStateStrategy

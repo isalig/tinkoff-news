@@ -1,6 +1,6 @@
-package io.aiico.tnews.domain
+package io.aiico.news.domain
 
-import io.aiico.tnews.domain.model.Article
+import io.aiico.news.domain.model.Article
 import io.reactivex.Single
 
 interface ArticlesRepository {

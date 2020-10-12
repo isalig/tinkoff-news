@@ -1,6 +1,6 @@
 package io.aiico.tnews.presentation.list
 
-import io.aiico.tnews.domain.model.Article
+import io.aiico.news.domain.model.Article
 
 sealed class NewsTitlesViewState(
     val titles: List<Article> = emptyList(),

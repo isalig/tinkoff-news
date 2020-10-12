@@ -1,7 +1,7 @@
 package io.aiico.tnews.data.converter
 
 import io.aiico.tnews.data.model.ArticleDto
-import io.aiico.tnews.domain.model.Article
+import io.aiico.news.domain.model.Article
 
 @Suppress("FunctionName")
 object ArticleMapper {
