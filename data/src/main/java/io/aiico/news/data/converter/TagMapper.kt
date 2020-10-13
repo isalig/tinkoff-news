@@ -1,7 +1,7 @@
-package io.aiico.tnews.data.converter
+package io.aiico.news.data.converter
 
 import io.aiico.news.domain.model.Tag
-import io.aiico.tnews.data.model.TagDto
+import io.aiico.news.data.model.TagDto
 
 @Suppress("FunctionName")
 object TagMapper {

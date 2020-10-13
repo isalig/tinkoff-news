@@ -4,7 +4,7 @@ import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
 import io.aiico.tnews.presentation.di.CommonDependencies
-import io.aiico.tnews.presentation.di.module.ApiModule
+import io.aiico.news.data.ApiModule
 import io.aiico.tnews.presentation.di.module.NavigationModule
 import javax.inject.Singleton
 
