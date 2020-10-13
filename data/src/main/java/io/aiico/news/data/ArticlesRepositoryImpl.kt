@@ -1,9 +1,9 @@
-package io.aiico.tnews.data
+package io.aiico.news.data
 
 import io.aiico.news.domain.ArticlesRepository
 import io.aiico.news.domain.model.Article
-import io.aiico.tnews.data.api.NewsApi
-import io.aiico.tnews.data.converter.ArticleMapper
+import io.aiico.news.data.api.NewsApi
+import io.aiico.news.data.converter.ArticleMapper
 import io.reactivex.Single
 import javax.inject.Inject
 

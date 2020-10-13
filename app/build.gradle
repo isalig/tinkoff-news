@@ -15,8 +15,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        buildConfigField "String", "API_BASE_URL", "\"https://cfg.tinkoff.ru/news/public/api/platform/v1/\""
     }
 
     buildTypes {
@@ -52,10 +50,6 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
 
-    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
-
     implementation "io.reactivex.rxjava2:rxjava:2.2.19"
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
@@ -69,4 +63,5 @@ dependencies {
     implementation "com.github.moxy-community:moxy-ktx:$moxyVersion"
 
     implementation project(':domain')
+    implementation project(':data')
 }

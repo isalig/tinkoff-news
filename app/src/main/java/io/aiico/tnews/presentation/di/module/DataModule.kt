@@ -3,7 +3,7 @@ package io.aiico.tnews.presentation.di.module
 import dagger.Binds
 import dagger.Module
 import io.aiico.news.domain.ArticlesRepository
-import io.aiico.tnews.data.ArticlesRepositoryImpl
+import io.aiico.news.data.ArticlesRepositoryImpl
 
 @Module
 abstract class DataModule {

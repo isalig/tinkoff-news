@@ -1,7 +1,7 @@
-package io.aiico.tnews.data.converter
+package io.aiico.news.data.converter
 
 import io.aiico.news.domain.model.Part
-import io.aiico.tnews.data.model.PartDto
+import io.aiico.news.data.model.PartDto
 
 @Suppress("FunctionName")
 object PartMapper {
