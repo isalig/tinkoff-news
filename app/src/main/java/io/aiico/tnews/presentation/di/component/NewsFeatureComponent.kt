@@ -6,25 +6,25 @@ import io.aiico.tnews.presentation.di.CommonDependencies
 import io.aiico.tnews.presentation.di.module.DataModule
 import io.aiico.tnews.presentation.list.NewsTitlesFragment
 
-@Component(dependencies = [CommonDependencies::class], modules = [DataModule::class])
+@Component(
+  dependencies = [CommonDependencies::class],
+  modules = [DataModule::class]
+)
 interface NewsFeatureComponent : CommonDependencies {
 
   fun inject(activity: MainActivity)
   fun inject(listFragment: NewsTitlesFragment)
 
-  @Component.Builder
-  interface Builder {
+  @Component.Factory
+  interface Factory {
 
-    fun setDependencies(dependencies: CommonDependencies): Builder
-
-    fun build(): NewsFeatureComponent
+    fun create(dependencies: CommonDependencies): NewsFeatureComponent
   }
 
   companion object {
 
     fun create(dependencies: CommonDependencies): NewsFeatureComponent =
-      DaggerNewsFeatureComponent.builder()
-        .setDependencies(dependencies)
-        .build()
+      DaggerNewsFeatureComponent.factory()
+        .create(dependencies)
   }
 }

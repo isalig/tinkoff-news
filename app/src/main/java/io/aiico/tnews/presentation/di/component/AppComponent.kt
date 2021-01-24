@@ -17,20 +17,12 @@ import javax.inject.Singleton
 )
 interface AppComponent : CommonDependencies {
 
-  @Component.Builder
-  interface Builder {
-
-    @BindsInstance
-    fun setContext(context: Context): Builder
-
-    fun build(): AppComponent
+  @Component.Factory
+  interface Factory {
+    fun create(@BindsInstance context: Context): AppComponent
   }
 
   companion object {
-
-    fun create(context: Context): AppComponent =
-      DaggerAppComponent.builder()
-        .setContext(context)
-        .build()
+    fun create(context: Context): AppComponent = DaggerAppComponent.factory().create(context)
   }
 }
