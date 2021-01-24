@@ -1,4 +1,4 @@
-rootProject.name='Tinkoff News'
+rootProject.name='tjnews'
 
 include ':app'
 include ':domain'
