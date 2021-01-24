@@ -15,7 +15,7 @@ fun Disposable.addTo(compositeDisposable: CompositeDisposable) {
   compositeDisposable.add(this)
 }
 
-fun ViewGroup.inflateViewHolder(@LayoutRes layoutResId: Int): View =
+fun ViewGroup.inflateView(@LayoutRes layoutResId: Int): View =
   LayoutInflater
     .from(context)
     .inflate(layoutResId, this, false)
@@ -37,9 +37,3 @@ fun Context.showToast(message: String) {
     .makeText(this, message, Toast.LENGTH_SHORT)
     .show()
 }
-
-var View.isVisible: Boolean
-  set(value) {
-    visibility = if (value) View.VISIBLE else View.GONE
-  }
-  get() = visibility == View.VISIBLE

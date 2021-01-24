@@ -1,44 +1,31 @@
 package io.aiico.tnews.presentation.detailed
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import io.aiico.news.domain.model.Article
 import io.aiico.tnews.R
+import io.aiico.tnews.presentation.NewsApp
 import io.aiico.tnews.presentation.asSpannedHtml
-import io.aiico.tnews.presentation.di.NewsFeatureClient
 import io.aiico.tnews.presentation.di.component.DetailedNewsComponent
-import io.aiico.tnews.presentation.di.component.NewsFeatureComponent
 import io.aiico.tnews.presentation.showToast
 import kotlinx.android.synthetic.main.fragment_detailed_news.*
 import kotlinx.android.synthetic.main.list_item_news_title.*
-import moxy.MvpAppCompatFragment
-import moxy.ktx.moxyPresenter
 import javax.inject.Inject
-import javax.inject.Provider
 
-class DetailedNewsFragment : MvpAppCompatFragment(), DetailedNewsView,
-  NewsFeatureClient {
+private const val KEY_NEWS_ID = "news_id"
+
+class DetailedNewsFragment : Fragment(R.layout.fragment_detailed_news), DetailedNewsView {
 
   @Inject
-  lateinit var presenterProvider: Provider<DetailedNewsPresenter>
-  private val presenter: DetailedNewsPresenter by moxyPresenter {
-    presenterProvider.get()
-  }
+  lateinit var presenter: DetailedNewsPresenter
 
-  override fun dispatchInjection(component: NewsFeatureComponent) {
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
     DetailedNewsComponent
-      .create(arguments?.getString(KEY_NEWS_ID)!!, component)
+      .create(arguments?.getString(KEY_NEWS_ID)!!, (requireActivity().application as NewsApp).appComponent)
       .inject(this)
-  }
-
-  override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
-  ): View? {
-    return inflater.inflate(R.layout.fragment_detailed_news, container, false)
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,6 +36,8 @@ class DetailedNewsFragment : MvpAppCompatFragment(), DetailedNewsView,
     detailsSwipeRefreshLayout.setOnRefreshListener {
       presenter.onRefresh()
     }
+
+    presenter.attachView(this)
   }
 
   @Suppress("DEPRECATION")
@@ -68,18 +57,14 @@ class DetailedNewsFragment : MvpAppCompatFragment(), DetailedNewsView,
     detailsSwipeRefreshLayout.isRefreshing = isLoading
   }
 
+  override fun onDestroyView() {
+    super.onDestroyView()
+    presenter.detachView()
+  }
+
   companion object {
 
-    private const val KEY_NEWS_ID = "news_id"
-
     fun newInstance(id: String) =
-      DetailedNewsFragment().apply {
-        arguments = packArguments(id)
-      }
-
-    private fun packArguments(id: String) =
-      Bundle().apply {
-        putString(KEY_NEWS_ID, id)
-      }
+      DetailedNewsFragment().apply { arguments = bundleOf(KEY_NEWS_ID to id) }
   }
 }

@@ -1,20 +1,18 @@
 package io.aiico.tnews.presentation.detailed
 
 import io.aiico.news.domain.NewsInteractor
-import io.aiico.tnews.presentation.BaseMvpPresenter
+import io.aiico.tnews.presentation.BasePresenter
 import io.aiico.tnews.presentation.addTo
 import io.reactivex.android.schedulers.AndroidSchedulers
-import moxy.InjectViewState
 import javax.inject.Inject
 
-@InjectViewState
 class DetailedNewsPresenter @Inject constructor(
   private val newsId: String,
   private val newsInteractor: NewsInteractor
-) : BaseMvpPresenter<DetailedNewsView>() {
+) : BasePresenter<DetailedNewsView>() {
 
-  override fun onFirstViewAttach() {
-    super.onFirstViewAttach()
+  override fun attachView(view: DetailedNewsView) {
+    super.attachView(view)
     loadDetails(false)
   }
 
@@ -26,11 +24,11 @@ class DetailedNewsPresenter @Inject constructor(
     newsInteractor
       .getArticle(newsId)
       .observeOn(AndroidSchedulers.mainThread())
-      .doOnSubscribe { viewState.showLoading(true) }
-      .doAfterTerminate { viewState.showLoading(false) }
+      .doOnSubscribe { view?.showLoading(true) }
+      .doAfterTerminate { view?.showLoading(false) }
       .subscribe(
-        { details -> viewState.showNewsDetails(details) },
-        { viewState.showError() }
+        { details -> view?.showNewsDetails(details) },
+        { view?.showError() }
       )
       .addTo(compositeDisposable)
   }

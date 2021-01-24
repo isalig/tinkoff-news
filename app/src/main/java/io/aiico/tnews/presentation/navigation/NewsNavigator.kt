@@ -12,6 +12,10 @@ class NewsNavigator {
     router = null
   }
 
+  fun showNewsList() {
+    router?.showNewsList()
+  }
+
   fun showDetailedNews(newsId: String) {
     router?.showDetailedNews(newsId)
   }

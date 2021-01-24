@@ -1,41 +1,30 @@
 package io.aiico.tnews.presentation.list
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.aiico.tnews.R
-import io.aiico.tnews.presentation.di.NewsFeatureClient
-import io.aiico.tnews.presentation.di.component.NewsFeatureComponent
-import io.aiico.tnews.presentation.isVisible
+import io.aiico.tnews.presentation.NewsApp
 import io.aiico.tnews.presentation.list.adapter.NewsTitleAdapter
 import io.aiico.tnews.presentation.showToast
 import kotlinx.android.synthetic.main.fragment_news_titles.*
-import moxy.MvpAppCompatFragment
-import moxy.ktx.moxyPresenter
 import javax.inject.Inject
-import javax.inject.Provider
 
-class NewsTitlesFragment : MvpAppCompatFragment(), NewsTitlesView, NewsFeatureClient {
+class NewsTitlesFragment : Fragment(R.layout.fragment_news_titles), NewsTitlesView {
 
   @Inject
-  lateinit var presenterProvider: Provider<NewsTitlesPresenter>
-  private val presenter: NewsTitlesPresenter by moxyPresenter {
-    presenterProvider.get()
-  }
+  lateinit var presenter: NewsTitlesPresenter
 
   private val newsTitleAdapter = NewsTitleAdapter { id ->
     presenter.onTitleClick(id)
   }
 
-  override fun dispatchInjection(component: NewsFeatureComponent) {
-    component.inject(this)
-  }
-
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-    return inflater.inflate(R.layout.fragment_news_titles, container, false)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    (requireActivity().application as NewsApp).appComponent.inject(this)
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,6 +39,7 @@ class NewsTitlesFragment : MvpAppCompatFragment(), NewsTitlesView, NewsFeatureCl
     retryEmptyButton.setOnClickListener {
       presenter.onRefresh()
     }
+    presenter.attachView(this)
   }
 
   private fun initTitlesRecyclerView() {
@@ -73,6 +63,11 @@ class NewsTitlesFragment : MvpAppCompatFragment(), NewsTitlesView, NewsFeatureCl
         context?.showToast(state.errorMessage)
       }
     }
+  }
+
+  override fun onDestroyView() {
+    super.onDestroyView()
+    presenter.detachView()
   }
 
   companion object {

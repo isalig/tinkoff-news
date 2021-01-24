@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.aiico.news.domain.model.Article
 import io.aiico.tnews.R
-import io.aiico.tnews.presentation.inflateViewHolder
+import io.aiico.tnews.presentation.inflateView
 
 class NewsTitleAdapter(private inline val onClick: (id: String) -> Unit) : RecyclerView.Adapter<NewsTitleViewHolder>() {
 
@@ -17,7 +17,7 @@ class NewsTitleAdapter(private inline val onClick: (id: String) -> Unit) : Recyc
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsTitleViewHolder =
-    NewsTitleViewHolder(parent.inflateViewHolder(R.layout.list_item_news_title))
+    NewsTitleViewHolder(parent.inflateView(R.layout.list_item_news_title))
 
   override fun onViewAttachedToWindow(holder: NewsTitleViewHolder) {
     holder.itemView.setOnClickListener {
