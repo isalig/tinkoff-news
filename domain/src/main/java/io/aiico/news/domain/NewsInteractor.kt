@@ -7,11 +7,11 @@ import javax.inject.Inject
 
 class NewsInteractor @Inject constructor(private val newsRepository: ArticlesRepository) {
 
-    fun getArticles(): Single<List<Article>> =
-            newsRepository.loadArticles()
-            .subscribeOn(Schedulers.io())
+  fun getArticles(): Single<List<Article>> =
+    newsRepository.loadArticles()
+      .subscribeOn(Schedulers.io())
 
-    fun getArticle(id: String): Single<Article> =
-            newsRepository.loadArticle(id)
-            .subscribeOn(Schedulers.io())
+  fun getArticle(id: String): Single<Article> =
+    newsRepository.loadArticle(id)
+      .subscribeOn(Schedulers.io())
 }

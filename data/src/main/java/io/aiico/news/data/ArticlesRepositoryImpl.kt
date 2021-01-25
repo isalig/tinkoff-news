@@ -1,9 +1,9 @@
 package io.aiico.news.data
 
-import io.aiico.news.domain.ArticlesRepository
-import io.aiico.news.domain.model.Article
 import io.aiico.news.data.api.NewsApi
 import io.aiico.news.data.converter.ArticleMapper
+import io.aiico.news.domain.ArticlesRepository
+import io.aiico.news.domain.model.Article
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -12,8 +12,7 @@ class ArticlesRepositoryImpl @Inject constructor(
 ) : ArticlesRepository {
 
   override fun loadArticles(): Single<List<Article>> =
-    newsApi
-      .getNewsTitles()
+    newsApi.getNewsTitles()
       .map { response -> response.response.news }
       .toObservable()
       .flatMapIterable { articles -> articles }
@@ -21,8 +20,5 @@ class ArticlesRepositoryImpl @Inject constructor(
       .toList()
 
   override fun loadArticle(id: String): Single<Article> =
-    loadArticles()
-      .map { localNews ->
-        localNews.find { it.id == id }
-      }
+    loadArticles().map { localNews -> localNews.find { it.id == id } }
 }

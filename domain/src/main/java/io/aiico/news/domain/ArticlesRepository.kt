@@ -5,7 +5,7 @@ import io.reactivex.Single
 
 interface ArticlesRepository {
 
-    fun loadArticles(): Single<List<Article>>
+  fun loadArticles(): Single<List<Article>>
 
-    fun loadArticle(id: String): Single<Article>
+  fun loadArticle(id: String): Single<Article>
 }

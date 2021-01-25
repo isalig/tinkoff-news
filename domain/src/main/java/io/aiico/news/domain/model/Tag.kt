@@ -1,6 +1,6 @@
 package io.aiico.news.domain.model
 
 data class Tag(
-        val id: String,
-        val value: String
+  val id: String,
+  val value: String
 )
