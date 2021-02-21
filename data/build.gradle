@@ -1,5 +1,4 @@
 plugins {
-    id 'java-library'
     id 'kotlin'
     id 'kotlin-kapt'
 }
@@ -10,7 +9,7 @@ java {
 }
 
 dependencies {
-    implementation Dependencies.kotlin
+    implementation project(':domain')
 
     implementation Dependencies.dagger
     kapt Dependencies.daggerCompiler
@@ -18,6 +17,4 @@ dependencies {
     implementation Dependencies.retrofit
     implementation Dependencies.retrofitRxAdapter
     implementation Dependencies.retrofitGsonConverter
-
-    implementation project(':domain')
 }

@@ -1,6 +1,6 @@
 package io.aiico.tnews.presentation.list
 
-import io.aiico.news.domain.NewsInteractor
+import io.aiico.news.domain.usecase.GetArticlesListUseCase
 import io.aiico.tnews.presentation.BasePresenter
 import io.aiico.tnews.presentation.addTo
 import io.aiico.tnews.presentation.navigation.NewsNavigator
@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class NewsTitlesPresenter @Inject constructor(
   private val titlesStateMachine: TitlesStateMachine,
-  private val newsInteractor: NewsInteractor,
+  private val getArticles: GetArticlesListUseCase,
   private val navigator: NewsNavigator,
   private val stateMachine: TitlesStateMachine
 ) : BasePresenter<NewsTitlesView>() {
@@ -32,8 +32,7 @@ class NewsTitlesPresenter @Inject constructor(
   }
 
   private fun loadNewsTitles(forceRefresh: Boolean) {
-    newsInteractor
-      .getArticles()
+    getArticles()
       .doOnSubscribe { updateState { stateMachine.onLoading() } }
       .observeOn(AndroidSchedulers.mainThread())
       .subscribe(

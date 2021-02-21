@@ -2,7 +2,7 @@ package io.aiico.tnews.presentation.di.component
 
 import dagger.BindsInstance
 import dagger.Component
-import io.aiico.news.data.api.NewsApi
+import io.aiico.news.data.api.ArticlesApi
 import io.aiico.tnews.presentation.detailed.DetailedNewsFragment
 import io.aiico.tnews.presentation.di.component.DetailedNewsComponent.DetailedNewsDependencies
 import io.aiico.tnews.presentation.di.module.DataModule
@@ -32,7 +32,7 @@ interface DetailedNewsComponent {
 
   interface DetailedNewsDependencies {
 
-    fun newsApi(): NewsApi
+    fun articlesApi(): ArticlesApi
     fun navigator(): NewsNavigator
   }
 }

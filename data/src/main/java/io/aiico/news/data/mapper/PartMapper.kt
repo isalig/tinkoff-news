@@ -1,4 +1,4 @@
-package io.aiico.news.data.converter
+package io.aiico.news.data.mapper
 
 import io.aiico.news.data.model.PartDto
 import io.aiico.news.domain.model.Part
