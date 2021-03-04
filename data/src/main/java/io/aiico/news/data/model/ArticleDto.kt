@@ -1,21 +1,22 @@
 package io.aiico.news.data.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ArticleDto(
-  @SerializedName("id") val id: String?,
-  @SerializedName("title") val title: String?,
-  @SerializedName("image") val image: String?,
-  @SerializedName("lang") val lang: String?,
-  @SerializedName("createdTime") val createdTime: String?,
-  @SerializedName("deleted") val deleted: Boolean?,
-  @SerializedName("hidden") val hidden: Boolean?,
-  @SerializedName("updatedTime") val updatedTime: String?,
-  @SerializedName("slug") val slug: String?,
-  @SerializedName("date") val date: String?,
-  @SerializedName("parts") val parts: List<PartDto>?,
-  @SerializedName("tags") val tags: List<TagDto>?,
-  @SerializedName("disclaimer") val disclaimer: String?,
-  @SerializedName("text") val text: String?,
-  @SerializedName("textshort") val shortText: String?
+  @SerialName("id") val id: String?,
+  @SerialName("title") val title: String?,
+  @SerialName("imageMobile") val image: String?,
+  @SerialName("lang") val lang: String?,
+  @SerialName("createdTime") val createdTime: String?,
+  @SerialName("deleted") val deleted: Boolean?,
+  @SerialName("hidden") val hidden: Boolean?,
+  @SerialName("updatedTime") val updatedTime: String?,
+  @SerialName("slug") val slug: String?,
+  @SerialName("date") val date: String?,
+  @SerialName("parts") val parts: List<PartDto>?,
+  @SerialName("tags") val tags: List<TagDto>?,
+  @SerialName("text") val text: String?,
+  @SerialName("textshort") val shortText: String?
 )

@@ -13,7 +13,6 @@ data class Article(
   val date: String?,
   val parts: List<Part>,
   val tags: List<Tag>,
-  val disclaimer: String,
   val text: String,
   val shortText: String
 )

@@ -7,9 +7,12 @@ object Dependencies {
   const val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxJava}"
   const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}"
 
-  const val retrofit =  "com.squareup.retrofit2:retrofit:${Versions.retrofit}}"
+  const val retrofit =  "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
   const val retrofitRxAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
-  const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+  const val retrofitConverter = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${Versions.retrofitConverter}"
+  const val json = "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.json}"
+  const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
+  const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
 
   const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
   const val material = "com.google.android.material:material:${Versions.material}"

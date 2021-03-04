@@ -1,6 +1,7 @@
 plugins {
     id 'kotlin'
     id 'kotlin-kapt'
+    id 'kotlinx-serialization'
 }
 
 java {
@@ -16,5 +17,7 @@ dependencies {
 
     implementation Dependencies.retrofit
     implementation Dependencies.retrofitRxAdapter
-    implementation Dependencies.retrofitGsonConverter
+    implementation Dependencies.retrofitConverter
+    implementation Dependencies.json
+    implementation Dependencies.okhttp
 }

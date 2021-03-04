@@ -1,8 +1,10 @@
 package io.aiico.news.data.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class TagDto(
-  @SerializedName("id") val id: String?,
-  @SerializedName("value") val value: String?
+  @SerialName("id") val id: String?,
+  @SerialName("value") val value: String?
 )

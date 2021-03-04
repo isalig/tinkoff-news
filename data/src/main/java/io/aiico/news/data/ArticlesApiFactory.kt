@@ -1,18 +1,26 @@
 package io.aiico.news.data
 
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import io.aiico.news.data.api.ArticlesApi
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 
-private const val API_BASE_URL = "https://cfg.tinkoff.ru/news/public/api/platform/v1/"
+private const val API_BASE_URL = "https://cfg.tinkoff.ru/about/public/api/news/platform/v1/"
 
 object ArticlesApiFactory {
 
   fun create(): ArticlesApi = provideArticlesApi(provideRetrofit())
 
+  @OptIn(ExperimentalSerializationApi::class)
   private fun provideRetrofit(): Retrofit = Retrofit.Builder()
-    .addConverterFactory(GsonConverterFactory.create())
+    .addConverterFactory(
+      Json {
+        ignoreUnknownKeys = true
+        isLenient = true
+      }.asConverterFactory("application/json".toMediaType()))
     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
     .baseUrl(API_BASE_URL)
     .build()

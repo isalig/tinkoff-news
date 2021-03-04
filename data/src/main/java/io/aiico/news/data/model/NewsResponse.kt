@@ -1,7 +1,9 @@
 package io.aiico.news.data.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class NewsResponse(
-  @SerializedName("response") val response: NewResponseContentDto
+  @SerialName("response") val response: NewResponseContentDto
 )

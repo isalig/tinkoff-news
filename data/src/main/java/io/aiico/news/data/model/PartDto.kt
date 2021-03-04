@@ -1,8 +1,10 @@
 package io.aiico.news.data.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class PartDto(
-  @SerializedName("id") val id: String?,
-  @SerializedName("title") val title: String?
+  @SerialName("id") val id: String?,
+  @SerialName("title") val title: String?
 )

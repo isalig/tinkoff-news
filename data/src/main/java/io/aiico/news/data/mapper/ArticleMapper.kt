@@ -20,7 +20,6 @@ object ArticleMapper {
       date = date,
       parts = parts?.map(PartMapper::Part).orEmpty(),
       tags = tags?.map(TagMapper::Tag).orEmpty(),
-      disclaimer = disclaimer.orEmpty(),
       text = text.orEmpty(),
       shortText = shortText.orEmpty(),
     )
