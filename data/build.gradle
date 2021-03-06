@@ -20,4 +20,5 @@ dependencies {
     implementation Dependencies.retrofitConverter
     implementation Dependencies.json
     implementation Dependencies.okhttp
+    implementation Dependencies.loggingInterceptor
 }

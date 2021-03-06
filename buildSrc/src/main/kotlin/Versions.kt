@@ -16,7 +16,7 @@ object Versions {
   const val retrofit = "2.8.1"
   const val retrofitConverter = "0.8.0"
   const val json = "1.1.0"
-  const val okhttp = "4.9.0"
+  const val okhttp = "4.5.0"
 
   const val appCompat = "1.2.0"
   const val material = "1.2.1"
