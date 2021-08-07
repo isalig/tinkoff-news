@@ -2,8 +2,17 @@ package io.aiico.tnews.presentation
 
 import android.app.Application
 import android.util.Log
+import com.facebook.flipper.android.AndroidFlipperClient
+import com.facebook.flipper.android.utils.FlipperUtils
+import com.facebook.flipper.plugins.inspector.DescriptorMapping
+import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin
+import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
+import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
+import com.facebook.soloader.SoLoader
+import io.aiico.tnews.BuildConfig
 import io.aiico.tnews.presentation.di.component.AppComponent
 import io.reactivex.plugins.RxJavaPlugins
+import okhttp3.Interceptor
 
 class NewsApp : Application() {
 
@@ -11,10 +20,37 @@ class NewsApp : Application() {
 
   override fun onCreate() {
     super.onCreate()
-    appComponent = AppComponent.create(this)
+    val networkInterceptor = initFlipper()
+    initAppComponent(networkInterceptor)
+    initRxJava()
+  }
+
+  private fun initAppComponent(networkInterceptor: Interceptor) {
+    appComponent = AppComponent.create(this, networkInterceptor)
+  }
+
+  private fun initRxJava() {
     RxJavaPlugins.setErrorHandler { throwable ->
-      Log.e("Tinkoff", throwable.message, throwable)
+      Log.e("aiico", throwable.message, throwable)
       showToast(throwable.message ?: "Unknown error, see log message")
     }
+  }
+
+  private fun initFlipper(): Interceptor {
+    SoLoader.init(this, false)
+
+    // TODO do not provide this plugin for release builds
+    val networkPlugin = NetworkFlipperPlugin()
+    val networkInterceptor = FlipperOkhttpInterceptor(networkPlugin)
+
+    if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(this)) {
+      AndroidFlipperClient.getInstance(this).apply {
+        addPlugin(InspectorFlipperPlugin(this@NewsApp, DescriptorMapping.withDefaults()))
+        addPlugin(networkPlugin)
+        start()
+      }
+    }
+
+    return networkInterceptor
   }
 }

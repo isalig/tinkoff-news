@@ -23,4 +23,9 @@ object Dependencies {
   const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mockito}"
 
   const val ktxCore = "androidx.core:core-ktx:${Versions.ktxCore}"
+
+  const val flipper =  "com.facebook.flipper:flipper:${Versions.flipper}"
+  const val soloader =  "com.facebook.soloader:soloader:${Versions.soloader}"
+  const val flipperNoop =  "com.facebook.flipper:flipper-noop:${Versions.flipperNoop}"
+  const val flipperNetworkPlugin = "com.facebook.flipper:flipper-network-plugin:${Versions.flipperNetworkPlugin}"
 }

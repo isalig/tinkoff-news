@@ -46,6 +46,8 @@ dependencies {
     implementation Dependencies.appCompat
     implementation Dependencies.material
     implementation Dependencies.swipeRefreshLayout
+    implementation Dependencies.loggingInterceptor
+    implementation Dependencies.okhttp
     implementation Dependencies.recyclerView
 
     implementation Dependencies.rxJava
@@ -58,4 +60,9 @@ dependencies {
 
     testImplementation Dependencies.junit
     testImplementation Dependencies.mockitoKotlin
+
+    debugImplementation Dependencies.flipper
+    debugImplementation Dependencies.soloader
+    debugImplementation Dependencies.flipperNetworkPlugin
+    releaseImplementation Dependencies.flipperNoop
 }

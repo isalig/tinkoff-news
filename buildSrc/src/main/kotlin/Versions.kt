@@ -1,9 +1,9 @@
 object Versions {
-  const val kotlin = "1.4.30"
+  const val kotlin = "1.5.21"
   const val java = 1.8
 
   const val compileSdk = 30
-  const val buildTools = "29.0.3"
+  const val buildTools = "30.0.3"
 
   const val minSdk = 21
   const val targetSdk = 30
@@ -12,7 +12,7 @@ object Versions {
 
   const val rxJava = "2.2.19"
   const val rxAndroid = "2.1.1"
-  const val dagger = "2.28.3"
+  const val dagger = "2.38.1"
   const val retrofit = "2.8.1"
   const val retrofitConverter = "0.8.0"
   const val json = "1.1.0"
@@ -27,4 +27,9 @@ object Versions {
 
   const val junit = "4.13"
   const val mockito = "2.2.0"
+
+  const val flipper = "0.102.0"
+  const val soloader = "0.10.1"
+  const val flipperNoop = "0.102.0"
+  const val flipperNetworkPlugin = "0.102.0"
 }

@@ -4,11 +4,6 @@ plugins {
     id 'kotlinx-serialization'
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
-
 dependencies {
     implementation project(':domain')
 
@@ -20,5 +15,4 @@ dependencies {
     implementation Dependencies.retrofitConverter
     implementation Dependencies.json
     implementation Dependencies.okhttp
-    implementation Dependencies.loggingInterceptor
 }

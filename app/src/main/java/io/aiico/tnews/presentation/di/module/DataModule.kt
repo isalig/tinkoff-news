@@ -6,8 +6,8 @@ import io.aiico.news.data.ArticlesRepositoryImpl
 import io.aiico.news.domain.repository.ArticlesRepository
 
 @Module
-abstract class DataModule {
+interface DataModule {
 
   @Binds
-  abstract fun bindArticlesRepository(repository: ArticlesRepositoryImpl): ArticlesRepository
+  fun bindArticlesRepository(repository: ArticlesRepositoryImpl): ArticlesRepository
 }
