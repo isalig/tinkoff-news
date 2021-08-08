@@ -1,15 +1,11 @@
 package io.aiico.tnews.presentation.list
 
 import dagger.Component
-import io.aiico.news.data.api.ArticlesApi
-import io.aiico.tnews.presentation.di.module.DataModule
+import io.aiico.news.domain.usecase.GetArticlesListUseCase
 import io.aiico.tnews.presentation.list.FeedComponent.FeedDependencies
 import io.aiico.tnews.presentation.navigation.NewsNavigator
 
-@Component(
-  modules = [DataModule::class],
-  dependencies = [FeedDependencies::class]
-)
+@Component(dependencies = [FeedDependencies::class])
 interface FeedComponent {
 
   val presenter: FeedPresenter
@@ -26,6 +22,6 @@ interface FeedComponent {
 
   interface FeedDependencies {
     fun navigator(): NewsNavigator
-    fun articlesApi(): ArticlesApi
+    fun getArticlesUseCase(): GetArticlesListUseCase
   }
 }

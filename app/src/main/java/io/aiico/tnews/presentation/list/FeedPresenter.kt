@@ -8,7 +8,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
 class FeedPresenter @Inject constructor(
-  private val titlesStateMachine: FeedStateMachine,
   private val getArticles: GetArticlesListUseCase,
   private val navigator: NewsNavigator,
   private val stateMachine: FeedStateMachine
