@@ -3,12 +3,12 @@ package io.aiico.tnews.presentation.list
 import io.aiico.news.domain.model.Article
 import javax.inject.Inject
 
-class TitlesStateMachine @Inject constructor() {
+class FeedStateMachine @Inject constructor() {
 
-  var state: NewsTitlesViewState = EmptyLoading()
+  var state: FeedViewState = EmptyLoading()
     private set
 
-  fun onLoading(): NewsTitlesViewState {
+  fun onLoading(): FeedViewState {
     state = when (state) {
         is EmptyLoading, is Loading -> state
 
@@ -23,7 +23,7 @@ class TitlesStateMachine @Inject constructor() {
     return state
   }
 
-  fun onLoaded(titles: List<Article>): NewsTitlesViewState {
+  fun onLoaded(titles: List<Article>): FeedViewState {
     state = if (titles.isNotEmpty()) {
       Loaded(titles)
     } else {
@@ -32,7 +32,7 @@ class TitlesStateMachine @Inject constructor() {
     return state
   }
 
-  fun onError(errorMessage: String): NewsTitlesViewState {
+  fun onError(errorMessage: String): FeedViewState {
     state = if (state.titles.isNotEmpty()) {
       Error(state.titles, errorMessage)
     } else {

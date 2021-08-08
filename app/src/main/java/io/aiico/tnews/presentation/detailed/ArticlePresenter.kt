@@ -6,12 +6,12 @@ import io.aiico.tnews.presentation.addTo
 import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
-class DetailedNewsPresenter @Inject constructor(
+class ArticlePresenter @Inject constructor(
   private val newsId: String,
   private val getArticle: GetArticleUseCase
-) : BasePresenter<DetailedNewsView>() {
+) : BasePresenter<ArticleView>() {
 
-  override fun attachView(view: DetailedNewsView) {
+  override fun attachView(view: ArticleView) {
     super.attachView(view)
     loadDetails(false)
   }
@@ -26,7 +26,7 @@ class DetailedNewsPresenter @Inject constructor(
       .doOnSubscribe { view?.showLoading(true) }
       .doAfterTerminate { view?.showLoading(false) }
       .subscribe(
-        { details -> view?.showNewsDetails(details) },
+        { details -> view?.showArticle(details) },
         { view?.showError() }
       )
       .addTo(compositeDisposable)

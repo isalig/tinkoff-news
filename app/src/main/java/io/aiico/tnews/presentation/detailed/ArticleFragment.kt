@@ -8,24 +8,24 @@ import io.aiico.news.domain.model.Article
 import io.aiico.tnews.R
 import io.aiico.tnews.presentation.NewsApp
 import io.aiico.tnews.presentation.asSpannedHtml
-import io.aiico.tnews.presentation.di.component.DetailedNewsComponent
 import io.aiico.tnews.presentation.showToast
 import kotlinx.android.synthetic.main.fragment_detailed_news.*
 import kotlinx.android.synthetic.main.list_item_news_title.*
-import javax.inject.Inject
 
 private const val KEY_NEWS_ID = "news_id"
 
-class DetailedNewsFragment : Fragment(R.layout.fragment_detailed_news), DetailedNewsView {
+class ArticleFragment : Fragment(R.layout.fragment_detailed_news), ArticleView {
 
-  @Inject
-  lateinit var presenter: DetailedNewsPresenter
+  private lateinit var presenter: ArticlePresenter
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    DetailedNewsComponent
-      .create(arguments?.getString(KEY_NEWS_ID)!!, (requireActivity().application as NewsApp).appComponent)
-      .inject(this)
+    presenter = ArticleComponent
+      .create(
+        requireNotNull(requireArguments().getString(KEY_NEWS_ID)),
+        (requireActivity().application as NewsApp).appComponent
+      )
+      .presenter
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,7 +41,7 @@ class DetailedNewsFragment : Fragment(R.layout.fragment_detailed_news), Detailed
   }
 
   @Suppress("DEPRECATION")
-  override fun showNewsDetails(article: Article) {
+  override fun showArticle(article: Article) {
     with(article) {
       newsTitleTextView.text = title
       newsDateTextView.text = createdTime
@@ -65,6 +65,6 @@ class DetailedNewsFragment : Fragment(R.layout.fragment_detailed_news), Detailed
   companion object {
 
     fun newInstance(id: String) =
-      DetailedNewsFragment().apply { arguments = bundleOf(KEY_NEWS_ID to id) }
+      ArticleFragment().apply { arguments = bundleOf(KEY_NEWS_ID to id) }
   }
 }

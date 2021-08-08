@@ -7,7 +7,7 @@ import io.aiico.tnews.presentation.asSpannedHtml
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.list_item_news_title.*
 
-class NewsTitleViewHolder(
+class FeedViewHolder(
   override val containerView: View
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 

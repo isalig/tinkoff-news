@@ -1,15 +1,15 @@
-package io.aiico.tnews.presentation.di.component
+package io.aiico.tnews.presentation
 
 import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
 import io.aiico.news.data.ApiModule
-import io.aiico.tnews.presentation.MainActivity
-import io.aiico.tnews.presentation.di.component.DetailedNewsComponent.DetailedNewsDependencies
+import io.aiico.tnews.presentation.detailed.ArticleComponent.ArticleDependencies
 import io.aiico.tnews.presentation.di.module.AppModule
 import io.aiico.tnews.presentation.di.module.DataModule
 import io.aiico.tnews.presentation.di.module.NavigationModule
-import io.aiico.tnews.presentation.list.NewsTitlesFragment
+import io.aiico.tnews.presentation.list.FeedComponent.FeedDependencies
+import io.aiico.tnews.presentation.navigation.NewsNavigator
 import okhttp3.Interceptor
 import javax.inject.Singleton
 
@@ -22,10 +22,9 @@ import javax.inject.Singleton
     DataModule::class
   ]
 )
-interface AppComponent : DetailedNewsDependencies {
+interface AppComponent : FeedDependencies, ArticleDependencies {
 
-  fun inject(activity: MainActivity)
-  fun inject(fragment: NewsTitlesFragment)
+  val newsNavigator: NewsNavigator
 
   @Component.Factory
   interface Factory {

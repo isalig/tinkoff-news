@@ -8,23 +8,21 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.aiico.tnews.R
 import io.aiico.tnews.presentation.NewsApp
-import io.aiico.tnews.presentation.list.adapter.NewsTitleAdapter
+import io.aiico.tnews.presentation.list.adapter.FeedAdapter
 import io.aiico.tnews.presentation.showToast
-import kotlinx.android.synthetic.main.fragment_news_titles.*
-import javax.inject.Inject
+import kotlinx.android.synthetic.main.fragment_feed.*
 
-class NewsTitlesFragment : Fragment(R.layout.fragment_news_titles), NewsTitlesView {
+class FeedFragment : Fragment(R.layout.fragment_feed), FeedView {
 
-  @Inject
-  lateinit var presenter: NewsTitlesPresenter
+  private lateinit var presenter: FeedPresenter
 
-  private val newsTitleAdapter = NewsTitleAdapter { id ->
+  private val newsTitleAdapter = FeedAdapter { id ->
     presenter.onTitleClick(id)
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    (requireActivity().application as NewsApp).appComponent.inject(this)
+    presenter = FeedComponent.create((requireActivity().application as NewsApp).appComponent).presenter
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,7 +46,7 @@ class NewsTitlesFragment : Fragment(R.layout.fragment_news_titles), NewsTitlesVi
     newsTitlesRecyclerView.adapter = newsTitleAdapter
   }
 
-  override fun applyState(state: NewsTitlesViewState) {
+  override fun applyState(state: FeedViewState) {
     with(state) {
       titlesRefreshLayout.isVisible = showList
       titlesRefreshLayout.isRefreshing = showLoading
@@ -72,6 +70,6 @@ class NewsTitlesFragment : Fragment(R.layout.fragment_news_titles), NewsTitlesVi
 
   companion object {
 
-    fun newInstance() = NewsTitlesFragment()
+    fun newInstance() = FeedFragment()
   }
 }

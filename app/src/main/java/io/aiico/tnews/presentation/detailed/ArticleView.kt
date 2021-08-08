@@ -2,9 +2,9 @@ package io.aiico.tnews.presentation.detailed
 
 import io.aiico.news.domain.model.Article
 
-interface DetailedNewsView {
+interface ArticleView {
 
-  fun showNewsDetails(article: Article)
+  fun showArticle(article: Article)
 
   fun showError()
 

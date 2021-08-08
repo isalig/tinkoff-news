@@ -10,7 +10,6 @@ import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import com.facebook.soloader.SoLoader
 import io.aiico.tnews.BuildConfig
-import io.aiico.tnews.presentation.di.component.AppComponent
 import io.reactivex.plugins.RxJavaPlugins
 import okhttp3.Interceptor
 

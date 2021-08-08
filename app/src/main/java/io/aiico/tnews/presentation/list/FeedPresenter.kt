@@ -7,18 +7,18 @@ import io.aiico.tnews.presentation.navigation.NewsNavigator
 import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
-class NewsTitlesPresenter @Inject constructor(
-  private val titlesStateMachine: TitlesStateMachine,
+class FeedPresenter @Inject constructor(
+  private val titlesStateMachine: FeedStateMachine,
   private val getArticles: GetArticlesListUseCase,
   private val navigator: NewsNavigator,
-  private val stateMachine: TitlesStateMachine
-) : BasePresenter<NewsTitlesView>() {
+  private val stateMachine: FeedStateMachine
+) : BasePresenter<FeedView>() {
 
   init {
     loadNewsTitles(false)
   }
 
-  override fun attachView(view: NewsTitlesView) {
+  override fun attachView(view: FeedView) {
     super.attachView(view)
     view.applyState(stateMachine.state)
   }
@@ -42,7 +42,7 @@ class NewsTitlesPresenter @Inject constructor(
       .addTo(compositeDisposable)
   }
 
-  private inline fun updateState(stateAction: (TitlesStateMachine) -> Unit) {
+  private inline fun updateState(stateAction: (FeedStateMachine) -> Unit) {
     stateAction.invoke(stateMachine)
     view?.applyState(stateMachine.state)
   }
