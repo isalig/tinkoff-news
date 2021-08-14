@@ -1,12 +1,7 @@
 version: 2.1
 orbs:
   android: circleci/android@1.0.3
-jobs:
-  build:
-    description:
-      'Start building an Android project on CircleCI'
-    executor:
-      android/android
-    steps:
-      - checkout
-      - accept-licenses
+workflows:
+  build-workflow:
+    jobs:
+      - android/build
