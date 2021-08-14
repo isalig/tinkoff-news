@@ -1,6 +1,5 @@
 plugins {
     id 'kotlin'
-    id 'kotlin-kapt'
     id 'kotlinx-serialization'
 }
 
@@ -8,11 +7,10 @@ dependencies {
     implementation project(':domain')
 
     implementation Dependencies.dagger
-    kapt Dependencies.daggerCompiler
-
-    implementation Dependencies.retrofit
-    implementation Dependencies.retrofitRxAdapter
-    implementation Dependencies.retrofitConverter
+    implementation Dependencies.javaxInject
     implementation Dependencies.json
     implementation Dependencies.okhttp
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofitConverter
+    implementation Dependencies.retrofitRxAdapter
 }

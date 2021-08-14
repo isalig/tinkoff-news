@@ -3,8 +3,8 @@ package io.aiico.tnews.presentation
 import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
-import io.aiico.news.data.ApiModule
 import io.aiico.tnews.presentation.article.ArticleComponent.ArticleDependencies
+import io.aiico.tnews.presentation.di.module.ApiModule
 import io.aiico.tnews.presentation.di.module.AppModule
 import io.aiico.tnews.presentation.di.module.DataModule
 import io.aiico.tnews.presentation.di.module.NavigationModule
