@@ -1,13 +1,12 @@
 version: 2.1
-
 orbs:
- android: circleci/android@1.0
-
+  android: circleci/android@1.0.3
 jobs:
   build:
-    executor: android/android
-        
+    description:
+      'Start building an Android project on CircleCI'
+    executor:
+      android/android
     steps:
       - checkout
-      - run:
-          command: ./gradlew build --stacktrace
+      - accept-licenses
