@@ -1,4 +1,4 @@
-package io.aiico.tnews.presentation.detailed
+package io.aiico.tnews.presentation.article
 
 import io.aiico.news.domain.usecase.GetArticleUseCase
 import io.aiico.tnews.presentation.BasePresenter

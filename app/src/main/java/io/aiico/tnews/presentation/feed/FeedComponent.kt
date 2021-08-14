@@ -1,8 +1,8 @@
-package io.aiico.tnews.presentation.list
+package io.aiico.tnews.presentation.feed
 
 import dagger.Component
 import io.aiico.news.domain.usecase.GetArticlesListUseCase
-import io.aiico.tnews.presentation.list.FeedComponent.FeedDependencies
+import io.aiico.tnews.presentation.feed.FeedComponent.FeedDependencies
 import io.aiico.tnews.presentation.navigation.NewsNavigator
 
 @Component(dependencies = [FeedDependencies::class])

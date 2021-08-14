@@ -1,8 +1,8 @@
 package io.aiico.tnews.presentation.navigation
 
 import androidx.fragment.app.FragmentManager
-import io.aiico.tnews.presentation.detailed.ArticleFragment
-import io.aiico.tnews.presentation.list.FeedFragment
+import io.aiico.tnews.presentation.article.ArticleFragment
+import io.aiico.tnews.presentation.feed.FeedFragment
 
 class NewsRouter(private val fragmentManager: FragmentManager, private val containerId: Int) {
 

@@ -1,4 +1,4 @@
-package io.aiico.tnews.presentation.list.adapter
+package io.aiico.tnews.presentation.feed.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

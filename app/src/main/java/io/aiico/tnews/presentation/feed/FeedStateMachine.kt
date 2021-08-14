@@ -1,4 +1,4 @@
-package io.aiico.tnews.presentation.list
+package io.aiico.tnews.presentation.feed
 
 import io.aiico.news.domain.model.Article
 import javax.inject.Inject

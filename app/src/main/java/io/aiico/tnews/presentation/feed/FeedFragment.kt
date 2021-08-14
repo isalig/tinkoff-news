@@ -1,4 +1,4 @@
-package io.aiico.tnews.presentation.list
+package io.aiico.tnews.presentation.feed
 
 import android.os.Bundle
 import android.view.View
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.aiico.tnews.R
 import io.aiico.tnews.presentation.NewsApp
-import io.aiico.tnews.presentation.list.adapter.FeedAdapter
+import io.aiico.tnews.presentation.feed.adapter.FeedAdapter
 import io.aiico.tnews.presentation.showToast
 import kotlinx.android.synthetic.main.fragment_feed.*
 
