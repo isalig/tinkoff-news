@@ -23,7 +23,7 @@ class FeedPresenter @Inject constructor(
   }
 
   fun onTitleClick(titleId: String) {
-    navigator.showDetailedNews(titleId)
+    navigator.showArticle(titleId)
   }
 
   fun onRefresh() {

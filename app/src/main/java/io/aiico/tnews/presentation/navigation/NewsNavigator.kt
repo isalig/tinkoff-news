@@ -12,11 +12,11 @@ class NewsNavigator {
     router = null
   }
 
-  fun showNewsList() {
-    router?.showNewsList()
+  fun showFeed() {
+    router?.showFeed()
   }
 
-  fun showDetailedNews(newsId: String) {
-    router?.showDetailedNews(newsId)
+  fun showArticle(newsId: String) {
+    router?.showArticle(newsId)
   }
 }

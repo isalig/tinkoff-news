@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     navigator = (application as NewsApp).appComponent.newsNavigator
     navigator.setRouter(NewsRouter(supportFragmentManager, Window.ID_ANDROID_CONTENT))
-    savedInstanceState ?: navigator.showNewsList()
+    savedInstanceState ?: navigator.showFeed()
   }
 
   override fun onDestroy() {

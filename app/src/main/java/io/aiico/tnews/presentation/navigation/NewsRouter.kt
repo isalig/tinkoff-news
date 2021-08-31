@@ -6,14 +6,14 @@ import io.aiico.tnews.presentation.feed.FeedFragment
 
 class NewsRouter(private val fragmentManager: FragmentManager, private val containerId: Int) {
 
-  fun showNewsList() {
+  fun showFeed() {
     fragmentManager
       .beginTransaction()
       .replace(containerId, FeedFragment.newInstance())
       .commit()
   }
 
-  fun showDetailedNews(id: String) {
+  fun showArticle(id: String) {
     fragmentManager
       .beginTransaction()
       .replace(containerId, ArticleFragment.newInstance(id))
