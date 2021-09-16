@@ -1,7 +1,6 @@
 package io.aiico.tnews.presentation
 
 import android.app.Application
-import android.util.Log
 import com.facebook.flipper.android.AndroidFlipperClient
 import com.facebook.flipper.android.utils.FlipperUtils
 import com.facebook.flipper.plugins.inspector.DescriptorMapping
@@ -10,7 +9,6 @@ import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import com.facebook.soloader.SoLoader
 import io.aiico.tnews.BuildConfig
-import io.reactivex.plugins.RxJavaPlugins
 import okhttp3.Interceptor
 
 class NewsApp : Application() {
@@ -21,18 +19,10 @@ class NewsApp : Application() {
     super.onCreate()
     val networkInterceptor = initFlipper()
     initAppComponent(networkInterceptor)
-    initRxJava()
   }
 
   private fun initAppComponent(networkInterceptor: Interceptor) {
     appComponent = AppComponent.create(this, networkInterceptor)
-  }
-
-  private fun initRxJava() {
-    RxJavaPlugins.setErrorHandler { throwable ->
-      Log.e("aiico", throwable.message, throwable)
-      showToast(throwable.message ?: "Unknown error, see log message")
-    }
   }
 
   private fun initFlipper(): Interceptor {

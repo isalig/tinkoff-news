@@ -2,9 +2,8 @@ package io.aiico.tnews.presentation.feed
 
 import io.aiico.news.domain.usecase.GetArticlesListUseCase
 import io.aiico.tnews.presentation.BasePresenter
-import io.aiico.tnews.presentation.addTo
 import io.aiico.tnews.presentation.navigation.NewsNavigator
-import io.reactivex.android.schedulers.AndroidSchedulers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class FeedPresenter @Inject constructor(
@@ -14,7 +13,7 @@ class FeedPresenter @Inject constructor(
 ) : BasePresenter<FeedView>() {
 
   init {
-    loadNewsTitles(false)
+    loadNewsTitles()
   }
 
   override fun attachView(view: FeedView) {
@@ -27,18 +26,18 @@ class FeedPresenter @Inject constructor(
   }
 
   fun onRefresh() {
-    loadNewsTitles(true)
+    loadNewsTitles()
   }
 
-  private fun loadNewsTitles(forceRefresh: Boolean) {
-    getArticles()
-      .doOnSubscribe { updateState { stateMachine.onLoading() } }
-      .observeOn(AndroidSchedulers.mainThread())
-      .subscribe(
-        { news -> updateState { stateMachine -> stateMachine.onLoaded(news) } },
-        { error -> updateState { stateMachine -> stateMachine.onError(error.message ?: "Unknown error") } }
-      )
-      .addTo(compositeDisposable)
+  private fun loadNewsTitles() = presenterScope.launch {
+    updateState { stateMachine.onLoading() }
+    try {
+      updateState { stateMachine -> stateMachine.onLoaded(getArticles()) }
+    } catch (error: Throwable) {
+      updateState { stateMachine ->
+        stateMachine.onError(error.message ?: "Unknown error")
+      }
+    }
   }
 
   private inline fun updateState(stateAction: (FeedStateMachine) -> Unit) {

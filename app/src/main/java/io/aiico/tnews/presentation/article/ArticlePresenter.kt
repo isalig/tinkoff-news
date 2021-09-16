@@ -2,8 +2,7 @@ package io.aiico.tnews.presentation.article
 
 import io.aiico.news.domain.usecase.GetArticleUseCase
 import io.aiico.tnews.presentation.BasePresenter
-import io.aiico.tnews.presentation.addTo
-import io.reactivex.android.schedulers.AndroidSchedulers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class ArticlePresenter @Inject constructor(
@@ -13,22 +12,21 @@ class ArticlePresenter @Inject constructor(
 
   override fun attachView(view: ArticleView) {
     super.attachView(view)
-    loadDetails(false)
+    loadDetails()
   }
 
   fun onRefresh() {
-    loadDetails(true)
+    loadDetails()
   }
 
-  private fun loadDetails(forceRefresh: Boolean) {
-    getArticle(newsId)
-      .observeOn(AndroidSchedulers.mainThread())
-      .doOnSubscribe { view?.showLoading(true) }
-      .doAfterTerminate { view?.showLoading(false) }
-      .subscribe(
-        { details -> view?.showArticle(details) },
-        { view?.showError() }
-      )
-      .addTo(compositeDisposable)
+  private fun loadDetails() = presenterScope.launch {
+    view?.showLoading(true)
+    try {
+      view?.showArticle(getArticle(newsId))
+    } catch (error: Throwable) {
+      view?.showError()
+    } finally {
+      view?.showLoading(false)
+    }
   }
 }

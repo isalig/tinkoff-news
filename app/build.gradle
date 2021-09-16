@@ -44,14 +44,12 @@ dependencies {
     implementation project(':data')
 
     implementation Dependencies.appCompat
+    implementation Dependencies.coroutines
     implementation Dependencies.material
     implementation Dependencies.swipeRefreshLayout
     implementation Dependencies.loggingInterceptor
     implementation Dependencies.okhttp
     implementation Dependencies.recyclerView
-
-    implementation Dependencies.rxJava
-    implementation Dependencies.rxAndroid
 
     implementation Dependencies.dagger
     kapt Dependencies.daggerCompiler

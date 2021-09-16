@@ -8,12 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.LayoutRes
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
-
-fun Disposable.addTo(compositeDisposable: CompositeDisposable) {
-  compositeDisposable.add(this)
-}
 
 fun ViewGroup.inflateView(@LayoutRes layoutResId: Int): View =
   LayoutInflater

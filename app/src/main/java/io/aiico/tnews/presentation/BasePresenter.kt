@@ -1,11 +1,14 @@
 package io.aiico.tnews.presentation
 
 import androidx.annotation.CallSuper
-import io.reactivex.disposables.CompositeDisposable
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
 
 abstract class BasePresenter<V> {
 
-  protected val compositeDisposable = CompositeDisposable()
+  protected val presenterScope = CoroutineScope(Job() + Dispatchers.Main)
   protected var view: V? = null
 
   @CallSuper
@@ -15,6 +18,6 @@ abstract class BasePresenter<V> {
 
   @CallSuper
   open fun detachView() {
-    compositeDisposable.clear()
+    presenterScope.cancel()
   }
 }

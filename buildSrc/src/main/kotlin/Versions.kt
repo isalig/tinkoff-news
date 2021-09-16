@@ -9,8 +9,6 @@ object Versions {
   const val versionCode = 1
   const val versionName = "1.0"
 
-  const val rxJava = "2.2.19"
-  const val rxAndroid = "2.1.1"
   const val dagger = "2.38.1"
   const val retrofit = "2.8.1"
   const val retrofitConverter = "0.8.0"
@@ -28,4 +26,5 @@ object Versions {
   const val soloader = "0.10.1"
   const val flipperNoop = "0.102.0"
   const val flipperNetworkPlugin = "0.102.0"
+  const val coroutines = "1.3.9"
 }

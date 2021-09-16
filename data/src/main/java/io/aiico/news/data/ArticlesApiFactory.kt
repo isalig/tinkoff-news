@@ -7,7 +7,6 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
 private const val API_BASE_URL = "https://cfg.tinkoff.ru/about/public/api/news/platform/v1/"
 
@@ -19,7 +18,6 @@ object ArticlesApiFactory {
   private fun provideRetrofit(client: OkHttpClient): Retrofit = Retrofit.Builder()
     .client(client)
     .addConverterFactory(provideJson().asConverterFactory("application/json".toMediaType()))
-    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
     .baseUrl(API_BASE_URL)
     .build()
 

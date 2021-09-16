@@ -51,6 +51,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed), FeedView {
       titlesRefreshLayout.isVisible = showList
       titlesRefreshLayout.isRefreshing = showLoading
       newsTitleAdapter.submitList(titles)
+      childFragmentManager.beginTransaction().commit()
 
       errorLayout.isVisible = showEmptyError
       errorMessageTextView.text = errorMessage

@@ -6,11 +6,11 @@ plugins {
 dependencies {
     implementation project(':domain')
 
+    implementation Dependencies.coroutines
     implementation Dependencies.dagger
     implementation Dependencies.javaxInject
     implementation Dependencies.json
     implementation Dependencies.okhttp
     implementation Dependencies.retrofit
     implementation Dependencies.retrofitConverter
-    implementation Dependencies.retrofitRxAdapter
 }
