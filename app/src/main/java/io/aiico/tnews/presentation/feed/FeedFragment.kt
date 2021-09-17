@@ -24,8 +24,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
   private val viewModel by viewModels<FeedViewModel>(
     factoryProducer = {
       object : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-          component.viewModel as T
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T = component.viewModel as T
       }
     }
   )
@@ -55,7 +54,9 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
 
   override fun onViewStateRestored(savedInstanceState: Bundle?) {
     super.onViewStateRestored(savedInstanceState)
-    viewModel.state.onEach { render(it) }.launchWhenStarted(viewLifecycleOwner)
+    viewModel.state
+      .onEach(::render)
+      .launchWhenStarted(viewLifecycleOwner)
   }
 
   private fun render(state: FeedViewState) {

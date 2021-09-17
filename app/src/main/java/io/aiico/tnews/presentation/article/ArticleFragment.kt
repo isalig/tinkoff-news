@@ -26,9 +26,7 @@ class ArticleFragment : Fragment(R.layout.fragment_detailed_news) {
   private val viewModel by viewModels<ArticleViewModel>(
     factoryProducer = {
       object : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-          return component.viewModel as T
-        }
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T = component.viewModel as T
       }
     }
   )
@@ -55,7 +53,7 @@ class ArticleFragment : Fragment(R.layout.fragment_detailed_news) {
   override fun onViewStateRestored(savedInstanceState: Bundle?) {
     super.onViewStateRestored(savedInstanceState)
     viewModel.state
-      .onEach { render(it) }
+      .onEach(::render)
       .launchWhenStarted(viewLifecycleOwner)
   }
 
