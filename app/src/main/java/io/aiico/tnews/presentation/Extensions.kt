@@ -8,6 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.LayoutRes
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 
 fun ViewGroup.inflateView(@LayoutRes layoutResId: Int): View =
   LayoutInflater
@@ -30,4 +34,10 @@ fun Context.showToast(message: String) {
   Toast
     .makeText(this, message, Toast.LENGTH_SHORT)
     .show()
+}
+
+fun <T> Flow<T>.launchWhenStarted(lifecycleOwner: LifecycleOwner) {
+  lifecycleOwner.lifecycleScope.launchWhenStarted {
+    collect()
+  }
 }

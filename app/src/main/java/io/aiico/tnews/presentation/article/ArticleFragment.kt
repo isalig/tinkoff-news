@@ -4,28 +4,42 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import io.aiico.news.domain.model.Article
 import io.aiico.tnews.R
 import io.aiico.tnews.presentation.NewsApp
 import io.aiico.tnews.presentation.asSpannedHtml
+import io.aiico.tnews.presentation.launchWhenStarted
 import io.aiico.tnews.presentation.showToast
 import kotlinx.android.synthetic.main.fragment_detailed_news.*
 import kotlinx.android.synthetic.main.list_item_news_title.*
+import kotlinx.coroutines.flow.onEach
 
 private const val KEY_NEWS_ID = "news_id"
 
-class ArticleFragment : Fragment(R.layout.fragment_detailed_news), ArticleView {
+class ArticleFragment : Fragment(R.layout.fragment_detailed_news) {
 
-  private lateinit var presenter: ArticlePresenter
+  private lateinit var component: ArticleComponent
+
+  private val viewModel by viewModels<ArticleViewModel>(
+    factoryProducer = {
+      object : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+          return component.viewModel as T
+        }
+      }
+    }
+  )
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    presenter = ArticleComponent
+    component = ArticleComponent
       .create(
         requireNotNull(requireArguments().getString(KEY_NEWS_ID)),
         (requireActivity().application as NewsApp).appComponent
       )
-      .presenter
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,14 +48,27 @@ class ArticleFragment : Fragment(R.layout.fragment_detailed_news), ArticleView {
       activity?.onBackPressed()
     }
     detailsSwipeRefreshLayout.setOnRefreshListener {
-      presenter.onRefresh()
+      viewModel.onRefresh()
     }
+  }
 
-    presenter.attachView(this)
+  override fun onViewStateRestored(savedInstanceState: Bundle?) {
+    super.onViewStateRestored(savedInstanceState)
+    viewModel.state
+      .onEach { render(it) }
+      .launchWhenStarted(viewLifecycleOwner)
+  }
+
+  private fun render(state: ViewState) {
+    detailsSwipeRefreshLayout.isRefreshing = state is Loading || state is Reloading
+    if (state is Error) context?.showToast(R.string.loading_failed_message)
+
+    if (state is Success) showArticle(state.article)
+    else if (state is Reloading) showArticle(state.article)
   }
 
   @Suppress("DEPRECATION")
-  override fun showArticle(article: Article) {
+  private fun showArticle(article: Article) {
     with(article) {
       newsTitleTextView.text = title
       newsDateTextView.text = createdTime
@@ -49,22 +76,9 @@ class ArticleFragment : Fragment(R.layout.fragment_detailed_news), ArticleView {
     }
   }
 
-  override fun showError() {
-    context?.showToast(R.string.loading_failed_message)
-  }
-
-  override fun showLoading(isLoading: Boolean) {
-    detailsSwipeRefreshLayout.isRefreshing = isLoading
-  }
-
-  override fun onDestroyView() {
-    super.onDestroyView()
-    presenter.detachView()
-  }
-
   companion object {
-
-    fun newInstance(id: String) =
-      ArticleFragment().apply { arguments = bundleOf(KEY_NEWS_ID to id) }
+    fun newInstance(id: String) = ArticleFragment().apply {
+      arguments = bundleOf(KEY_NEWS_ID to id)
+    }
   }
 }

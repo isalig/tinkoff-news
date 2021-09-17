@@ -40,21 +40,23 @@ androidExtensions {
 }
 
 dependencies {
-    implementation project(':domain')
     implementation project(':data')
+    implementation project(':domain')
 
     implementation Dependencies.appCompat
     implementation Dependencies.coroutines
-    implementation Dependencies.material
-    implementation Dependencies.swipeRefreshLayout
+    implementation Dependencies.dagger
+    implementation Dependencies.fragmentKtx
+    implementation Dependencies.ktxCore
     implementation Dependencies.loggingInterceptor
+    implementation Dependencies.material
     implementation Dependencies.okhttp
     implementation Dependencies.recyclerView
+    implementation Dependencies.swipeRefreshLayout
+    implementation Dependencies.viewModel
+    implementation Dependencies.viewModelKtx
 
-    implementation Dependencies.dagger
     kapt Dependencies.daggerCompiler
-
-    implementation Dependencies.ktxCore
 
     testImplementation Dependencies.junit
     testImplementation Dependencies.mockitoKotlin
@@ -62,5 +64,6 @@ dependencies {
     debugImplementation Dependencies.flipper
     debugImplementation Dependencies.soloader
     debugImplementation Dependencies.flipperNetworkPlugin
+
     releaseImplementation Dependencies.flipperNoop
 }

@@ -1,24 +1,25 @@
 package io.aiico.tnews.presentation.feed
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import io.aiico.news.domain.usecase.GetArticlesListUseCase
-import io.aiico.tnews.presentation.BasePresenter
 import io.aiico.tnews.presentation.navigation.NewsNavigator
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class FeedPresenter @Inject constructor(
+class FeedViewModel @Inject constructor(
   private val getArticles: GetArticlesListUseCase,
   private val navigator: NewsNavigator,
   private val stateMachine: FeedStateMachine
-) : BasePresenter<FeedView>() {
+) : ViewModel() {
+
+  private val _state = MutableStateFlow(stateMachine.state)
+  val state = _state.asStateFlow()
 
   init {
     loadNewsTitles()
-  }
-
-  override fun attachView(view: FeedView) {
-    super.attachView(view)
-    view.applyState(stateMachine.state)
   }
 
   fun onTitleClick(titleId: String) {
@@ -29,7 +30,7 @@ class FeedPresenter @Inject constructor(
     loadNewsTitles()
   }
 
-  private fun loadNewsTitles() = presenterScope.launch {
+  private fun loadNewsTitles() = viewModelScope.launch {
     updateState { stateMachine.onLoading() }
     try {
       updateState { stateMachine -> stateMachine.onLoaded(getArticles()) }
@@ -40,8 +41,8 @@ class FeedPresenter @Inject constructor(
     }
   }
 
-  private inline fun updateState(stateAction: (FeedStateMachine) -> Unit) {
+  private suspend inline fun updateState(stateAction: (FeedStateMachine) -> Unit) {
     stateAction.invoke(stateMachine)
-    view?.applyState(stateMachine.state)
+    _state.emit(stateMachine.state)
   }
 }

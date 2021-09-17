@@ -8,7 +8,7 @@ import io.aiico.tnews.presentation.article.ArticleComponent.ArticleDependencies
 @Component(dependencies = [ArticleDependencies::class])
 interface ArticleComponent {
 
-  val presenter: ArticlePresenter
+  val viewModel: ArticleViewModel
 
   @Component.Factory
   interface Factory {

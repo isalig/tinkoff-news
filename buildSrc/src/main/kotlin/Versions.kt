@@ -27,4 +27,6 @@ object Versions {
   const val flipperNoop = "0.102.0"
   const val flipperNetworkPlugin = "0.102.0"
   const val coroutines = "1.3.9"
+  const val fragmentKtx = "1.3.6"
+  const val lifecycle = "2.3.1"
 }
