@@ -2,14 +2,16 @@ package io.aiico.tnews.presentation.article
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import io.aiico.news.domain.usecase.GetArticleUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class ArticleViewModel @Inject constructor(
-  private val newsId: String,
+class ArticleViewModel @AssistedInject constructor(
+  @Assisted private val articleId: String,
   private val getArticle: GetArticleUseCase
 ) : ViewModel() {
 
@@ -29,9 +31,14 @@ class ArticleViewModel @Inject constructor(
     val loadingState = if (currentState is Success) Reloading(currentState.article) else Loading
     _state.emit(loadingState)
     try {
-      _state.emit(Success(getArticle(newsId)))
+      _state.emit(Success(getArticle(articleId)))
     } catch (error: Throwable) {
       _state.emit(Error)
     }
+  }
+
+  @AssistedFactory
+  interface Factory {
+    fun create(articleId: String): ArticleViewModel
   }
 }

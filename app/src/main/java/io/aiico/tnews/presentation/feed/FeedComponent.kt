@@ -8,7 +8,7 @@ import io.aiico.tnews.presentation.navigation.NewsNavigator
 @Component(dependencies = [FeedDependencies::class])
 interface FeedComponent {
 
-  val viewModel: FeedViewModel
+  val factory: FeedViewModel.Factory
 
   @Component.Factory
   interface Factory {

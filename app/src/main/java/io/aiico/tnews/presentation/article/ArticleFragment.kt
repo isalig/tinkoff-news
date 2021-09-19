@@ -4,32 +4,26 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import io.aiico.news.domain.model.Article
 import io.aiico.tnews.R
 import io.aiico.tnews.presentation.NewsApp
 import io.aiico.tnews.presentation.asSpannedHtml
+import io.aiico.tnews.presentation.delegate.argument
+import io.aiico.tnews.presentation.delegate.viewModelInstance
 import io.aiico.tnews.presentation.launchWhenStarted
 import io.aiico.tnews.presentation.showToast
 import kotlinx.android.synthetic.main.fragment_detailed_news.*
 import kotlinx.android.synthetic.main.list_item_news_title.*
 import kotlinx.coroutines.flow.onEach
 
-private const val KEY_NEWS_ID = "news_id"
-
 class ArticleFragment : Fragment(R.layout.fragment_detailed_news) {
 
   private lateinit var component: ArticleComponent
+  private val articleId: String by argument(KEY_NEWS_ID)
 
-  private val viewModel by viewModels<ArticleViewModel>(
-    factoryProducer = {
-      object : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T = component.viewModel as T
-      }
-    }
-  )
+  private val viewModel by viewModelInstance {
+    component.factory.create(articleId)
+  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -75,6 +69,8 @@ class ArticleFragment : Fragment(R.layout.fragment_detailed_news) {
   }
 
   companion object {
+    private const val KEY_NEWS_ID = "news_id"
+
     fun newInstance(id: String) = ArticleFragment().apply {
       arguments = bundleOf(KEY_NEWS_ID to id)
     }

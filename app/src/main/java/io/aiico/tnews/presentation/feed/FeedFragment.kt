@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.aiico.tnews.R
 import io.aiico.tnews.presentation.NewsApp
+import io.aiico.tnews.presentation.delegate.viewModelInstance
 import io.aiico.tnews.presentation.feed.adapter.FeedAdapter
 import io.aiico.tnews.presentation.launchWhenStarted
 import io.aiico.tnews.presentation.showToast
@@ -21,13 +19,9 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
 
   private lateinit var component: FeedComponent
 
-  private val viewModel by viewModels<FeedViewModel>(
-    factoryProducer = {
-      object : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T = component.viewModel as T
-      }
-    }
-  )
+  private val viewModel: FeedViewModel by viewModelInstance {
+    component.factory.create()
+  }
 
   private val newsTitleAdapter = FeedAdapter { id ->
     viewModel.onTitleClick(id)
