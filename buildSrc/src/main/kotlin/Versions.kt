@@ -18,7 +18,7 @@ object Versions {
   const val appCompat = "1.2.0"
   const val material = "1.2.1"
   const val swipeRefresh = "1.1.0"
-  const val recyclerView = "1.1.0"
+  const val recyclerView = "1.2.1"
   const val ktxCore = "1.3.2"
   const val junit = "4.13"
   const val mockito = "2.2.0"

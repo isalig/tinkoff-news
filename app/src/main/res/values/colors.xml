@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="primary">#FF3C3C</color>
+    <color name="secondary">#5A489B</color>
+    <color name="text_primary">#252729</color>
+    <color name="text_secondary">#5F646C</color>
+    <color name="text_tertiary">#A3A7AE</color>
 </resources>

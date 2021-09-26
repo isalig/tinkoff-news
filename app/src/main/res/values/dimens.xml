@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="indent_m">20dp</dimen>
+
+    <dimen name="corner_radius_m">8dp</dimen>
+    <dimen name="corner_radius_l">16dp</dimen>
+
+    <dimen name="title_large">34sp</dimen>
+    <dimen name="title_1">28sp</dimen>
+    <dimen name="title_2">22sp</dimen>
+    <dimen name="title_3">20sp</dimen>
+    <dimen name="headline">17sp</dimen>
+    <dimen name="body">17sp</dimen>
+    <dimen name="callout">16sp</dimen>
+    <dimen name="subheadline">15sp</dimen>
+    <dimen name="footnote">13sp</dimen>
+    <dimen name="caption">11sp</dimen>
+    <dimen name="navigation_label">10sp</dimen>
+</resources>

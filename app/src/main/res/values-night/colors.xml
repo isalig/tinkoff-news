@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="text_primary">#FAFAFA</color>
+    <color name="text_secondary">#BCBCBC</color>
+    <color name="text_tertiary">#77797D</color>
+</resources>
