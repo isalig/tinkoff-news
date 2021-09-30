@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="TextAppearance.News" parent="TextAppearance.AppCompat">
+    <item name="android:textColor">@color/text_primary</item>
+    <item name="android:textSize">@dimen/body</item>
+    <item name="android:fontFamily">@font/inter_regular</item>
+  </style>
+
+  <style name="TextAppearance.LargeTitle" parent="TextAppearance.News">
+    <item name="android:textSize">@dimen/title_large</item>
+    <item name="android:fontFamily">@font/inter_bold</item>
+  </style>
+
+  <style name="TextAppearance.Title1" parent="TextAppearance.News">
+    <item name="android:textSize">@dimen/title_1</item>
+    <item name="android:fontFamily">@font/inter_bold</item>
+  </style>
+
+  <style name="TextAppearance.Title2" parent="TextAppearance.News">
+    <item name="android:textSize">@dimen/title_2</item>
+    <item name="android:fontFamily">@font/inter_bold</item>
+  </style>
+
+  <style name="TextAppearance.Title3" parent="TextAppearance.News">
+    <item name="android:textSize">@dimen/title_3</item>
+    <item name="android:fontFamily">@font/inter_semi_bold</item>
+  </style>
+
+  <style name="TextAppearance.Headline" parent="TextAppearance.News">
+    <item name="android:textSize">@dimen/headline</item>
+    <item name="android:fontFamily">@font/inter_semi_bold</item>
+  </style>
+
+  <style name="TextAppearance.Body" parent="TextAppearance.News">
+    <item name="android:textSize">@dimen/body</item>
+  </style>
+
+  <style name="TextAppearance.Body.Medium">
+    <item name="android:fontFamily">@font/inter_medium</item>
+  </style>
+
+  <style name="TextAppearance.Callout" parent="TextAppearance.News">
+    <item name="android:textSize">@dimen/callout</item>
+  </style>
+
+  <style name="TextAppearance.Callout.Medium">
+    <item name="android:fontFamily">@font/inter_medium</item>
+  </style>
+
+  <style name="TextAppearance.Subheadline" parent="TextAppearance.News">
+    <item name="android:textSize">@dimen/subheadline</item>
+  </style>
+
+  <style name="TextAppearance.Subheadline.Medium">
+    <item name="android:fontFamily">@font/inter_medium</item>
+  </style>
+
+  <style name="TextAppearance.Footnote" parent="TextAppearance.News">
+    <item name="android:textSize">@dimen/footnote</item>
+  </style>
+
+  <style name="TextAppearance.Caption" parent="TextAppearance.News">
+    <item name="android:textSize">@dimen/caption</item>
+  </style>
+
+  <style name="TextAppearance.Caption.Semibold">
+    <item name="android:fontFamily">@font/inter_semi_bold</item>
+  </style>
+
+  <style name="TextAppearance.NavigationLabel" parent="TextAppearance.News">
+    <item name="android:textSize">@dimen/navigation_label</item>
+  </style>
+
+
+</resources>

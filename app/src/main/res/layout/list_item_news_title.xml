@@ -5,25 +5,26 @@
   android:layout_height="wrap_content"
   android:background="?selectableItemBackground"
   android:orientation="vertical"
-  android:padding="16sp">
-
-  <TextView
-    android:id="@+id/newsDateTextView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="end"
-    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-    tools:text="@tools:sample/lorem" />
+  >
 
   <TextView
     android:id="@+id/newsTitleTextView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="4dp"
     android:ellipsize="end"
     android:maxLines="2"
-    android:textAppearance="@android:style/TextAppearance.Material.Headline"
-    android:textStyle="bold"
-    tools:text="@tools:sample/lorem/random" />
+    android:textAppearance="@style/TextAppearance.Headline"
+    tools:text="@tools:sample/lorem/random"
+    />
+
+  <TextView
+    android:id="@+id/newsDateTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/indent_l"
+    android:textAppearance="@style/TextAppearance.Caption"
+    android:textColor="?android:textColorSecondary"
+    tools:text="@tools:sample/lorem"
+    />
 
 </LinearLayout>
