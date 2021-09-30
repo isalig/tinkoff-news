@@ -10,7 +10,10 @@ import io.aiico.tnews.R
 import io.aiico.tnews.presentation.NewsApp
 import io.aiico.tnews.presentation.delegate.viewModelInstance
 import io.aiico.tnews.presentation.feed.adapter.FeedAdapter
+import io.aiico.tnews.presentation.getSize
 import io.aiico.tnews.presentation.launchWhenStarted
+import io.aiico.tnews.presentation.shared.ItemsVerticalOffsetDecoration
+import io.aiico.tnews.presentation.shared.ItemsVerticalOffsetDecoration.OffsetDirection
 import io.aiico.tnews.presentation.showToast
 import kotlinx.android.synthetic.main.fragment_feed.*
 import kotlinx.coroutines.flow.onEach
@@ -72,8 +75,11 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
   }
 
   private fun initTitlesRecyclerView() {
-    val dividerDecoration = DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
-    newsTitlesRecyclerView.addItemDecoration(dividerDecoration)
+    listOf(
+      ItemsVerticalOffsetDecoration(requireView().getSize(R.dimen.indent_m), OffsetDirection.TOP),
+      ItemsVerticalOffsetDecoration(requireView().getSize(R.dimen.indent_m), OffsetDirection.BOTTOM),
+      DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
+    ).onEach(newsTitlesRecyclerView::addItemDecoration)
     newsTitlesRecyclerView.adapter = newsTitleAdapter
   }
 

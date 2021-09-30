@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.DimenRes
 import androidx.annotation.LayoutRes
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
@@ -41,3 +42,5 @@ fun <T> Flow<T>.launchWhenStarted(lifecycleOwner: LifecycleOwner) {
     collect()
   }
 }
+
+fun View.getSize(@DimenRes dimenResId: Int): Int = resources.getDimensionPixelSize(dimenResId)

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="indent_2xl">32dp</dimen>
+    <dimen name="indent_xl">24dp</dimen>
     <dimen name="indent_l">20dp</dimen>
     <dimen name="indent_m">16dp</dimen>
     <dimen name="indent_s">12dp</dimen>
     <dimen name="indent_xs">8dp</dimen>
 
-    <dimen name="corner_radius_m">8dp</dimen>
     <dimen name="corner_radius_l">16dp</dimen>
+    <dimen name="corner_radius_m">8dp</dimen>
 
     <dimen name="title_large">34sp</dimen>
     <dimen name="title_1">28sp</dimen>
