@@ -22,7 +22,7 @@ class FeedAdapter(private inline val onClick: (id: String) -> Unit) : RecyclerVi
 
   override fun onViewAttachedToWindow(holder: FeedViewHolder) {
     holder.itemView.setOnClickListener {
-      onClick.invoke(titles[holder.adapterPosition].id)
+      onClick.invoke(titles[holder.bindingAdapterPosition].id)
     }
   }
 

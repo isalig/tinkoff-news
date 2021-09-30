@@ -2,6 +2,7 @@ package io.aiico.news.data.mapper
 
 import io.aiico.news.data.model.ArticleDto
 import io.aiico.news.domain.model.Article
+import org.threeten.bp.ZonedDateTime
 
 @Suppress("FunctionName")
 object ArticleMapper {
@@ -11,7 +12,7 @@ object ArticleMapper {
       id = id.orEmpty(),
       title = title.orEmpty(),
       image = image,
-      createdTime = createdTime,
+      publicationDateTime = publicationDateTime?.let(ZonedDateTime::parse),
       hidden = hidden ?: false,
       slug = slug,
       parts = parts?.map(PartMapper::Part).orEmpty(),

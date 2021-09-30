@@ -1,10 +1,12 @@
 package io.aiico.news.domain.model
 
+import org.threeten.bp.ZonedDateTime
+
 data class Article(
   val id: String,
   val title: String,
   val image: String?,
-  val createdTime: String?,
+  val publicationDateTime: ZonedDateTime?,
   val hidden: Boolean,
   val slug: String?,
   val parts: List<Part>,

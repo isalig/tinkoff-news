@@ -11,7 +11,7 @@ import com.facebook.soloader.SoLoader
 import io.aiico.tnews.BuildConfig
 import okhttp3.Interceptor
 
-class NewsApp : Application() {
+class  NewsApp : Application() {
 
   lateinit var appComponent: AppComponent
 

@@ -6,4 +6,5 @@ dependencies {
     implementation Dependencies.dagger
     implementation Dependencies.javaxInject
     implementation Dependencies.kotlin
+    implementation Dependencies.threeTenAndroid
 }

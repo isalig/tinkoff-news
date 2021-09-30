@@ -8,7 +8,7 @@ data class ArticleDto(
   @SerialName("id") val id: String?,
   @SerialName("title") val title: String?,
   @SerialName("imageMobile") val image: String?,
-  @SerialName("publishedAt") val createdTime: String?,
+  @SerialName("publishedAt") val publicationDateTime: String?,
   @SerialName("hidden") val hidden: Boolean?,
   @SerialName("slug") val slug: String?,
   @SerialName("parts") val parts: List<PartDto>?,

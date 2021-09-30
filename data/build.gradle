@@ -13,4 +13,5 @@ dependencies {
     implementation Dependencies.okhttp
     implementation Dependencies.retrofit
     implementation Dependencies.retrofitConverter
+    implementation Dependencies.threeTenAndroid
 }

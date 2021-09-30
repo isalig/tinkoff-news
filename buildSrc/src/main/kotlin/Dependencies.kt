@@ -21,7 +21,7 @@ object Dependencies {
   const val retrofitConverter = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${Versions.retrofitConverter}"
   const val soloader = "com.facebook.soloader:soloader:${Versions.soloader}"
   const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefresh}"
-  const val threeTen = "com.jakewharton.threetenabp:threetenabp:${Versions.threeTen}"
+  const val threeTenAndroid = "com.jakewharton.threetenabp:threetenabp:${Versions.threeTen}"
   const val viewModel = "androidx.lifecycle:lifecycle-viewmodel:${Versions.lifecycle}"
   const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
 }

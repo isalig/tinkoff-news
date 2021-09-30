@@ -53,6 +53,7 @@ dependencies {
     implementation Dependencies.okhttp
     implementation Dependencies.recyclerView
     implementation Dependencies.swipeRefreshLayout
+    implementation Dependencies.threeTenAndroid
     implementation Dependencies.viewModel
     implementation Dependencies.viewModelKtx
 

@@ -63,7 +63,7 @@ class ArticleFragment : Fragment(R.layout.fragment_detailed_news) {
   private fun showArticle(article: Article) {
     with(article) {
       newsTitleTextView.text = title
-      newsDateTextView.text = createdTime
+      newsDateTextView.text = publicationDateTime.toString()
       newsContentTextView.text = text.asSpannedHtml()
     }
   }
