@@ -62,9 +62,8 @@ dependencies {
     testImplementation Dependencies.junit
     testImplementation Dependencies.mockitoKotlin
 
-    debugImplementation Dependencies.flipper
-    debugImplementation Dependencies.soloader
-    debugImplementation Dependencies.flipperNetworkPlugin
-
-    releaseImplementation Dependencies.flipperNoop
+//    releaseImplementation Dependencies.flipperNoop
+    implementation Dependencies.flipper
+    implementation Dependencies.soloader
+    implementation Dependencies.flipperNetworkPlugin
 }

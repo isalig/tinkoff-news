@@ -30,12 +30,12 @@ interface AppComponent : FeedDependencies, ArticleDependencies {
   interface Factory {
     fun create(
       @BindsInstance context: Context,
-      @BindsInstance interceptor: Interceptor
+      @BindsInstance interceptor: Interceptor?
     ): AppComponent
   }
 
   companion object {
-    fun create(context: Context, networkInterceptor: Interceptor): AppComponent =
+    fun create(context: Context, networkInterceptor: Interceptor?): AppComponent =
       DaggerAppComponent.factory().create(context, networkInterceptor)
   }
 }

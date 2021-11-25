@@ -13,9 +13,9 @@ object AppModule {
   @Provides
   @Singleton
   @JvmStatic
-  fun provideOkHttpClient(networkInterceptor: Interceptor): OkHttpClient =
-    OkHttpClient.Builder()
-      .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
-      .addNetworkInterceptor(networkInterceptor)
-      .build()
+  fun provideOkHttpClient(networkInterceptor: Interceptor?): OkHttpClient =
+    OkHttpClient.Builder().apply {
+      addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
+      networkInterceptor?.let(::addNetworkInterceptor)
+    }.build()
 }
