@@ -1,0 +1,7 @@
+ext.configVersions = [
+        buildTools: "31.0.0",
+        compileSdk: 31,
+        targetSdk : 31,
+        minSdk    : 26,
+        java      : "11"
+]

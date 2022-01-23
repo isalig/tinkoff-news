@@ -3,8 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation Dependencies.dagger
-    implementation Dependencies.javaxInject
-    implementation Dependencies.kotlin
-    implementation Dependencies.threeTenAndroid
+    implementation libraries.dagger
+    implementation libraries.javaxInject
+    implementation libraries.threeTenAndroid
 }

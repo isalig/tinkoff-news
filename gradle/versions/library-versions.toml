@@ -1,0 +1,48 @@
+[versions]
+appCompat = "1.2.0"
+coroutines = "1.3.9"
+dagger = "2.38.1"
+flipper = "0.102.0"
+flipperNetworkPlugin = "0.102.0"
+flipperNoop = "0.102.0"
+fragmentKtx = "1.3.6"
+javaxInject = "1"
+json = "1.1.0"
+junit = "4.13"
+ktxCore = "1.3.2"
+lifecycle = "2.3.1"
+material = "1.2.1"
+mockito = "2.2.0"
+okhttp = "4.5.0"
+recyclerView = "1.2.1"
+retrofit = "2.8.1"
+retrofitConverter = "0.8.0"
+soloader = "0.10.1"
+swipeRefresh = "1.1.0"
+threeTen = "1.3.1"
+
+[libraries]
+appCompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appCompat" }
+coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" }
+daggerCompiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger" }
+flipper = { group = "com.facebook.flipper", name = "flipper", version.ref = "flipper" }
+flipperNetworkPlugin = { group = "com.facebook.flipper", name = "flipper-network-plugin", version.ref = "flipperNetworkPlugin" }
+flipperNoop = { group = "com.facebook.flipper", name = "flipper-noop", version.ref = "flipperNoop" }
+fragmentKtx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
+javaxInject = { group = "javax.inject", name = "javax.inject", version.ref = "javaxInject" }
+json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "json" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+ktxCore = { group = "androidx.core", name = "core-ktx", version.ref = "ktxCore" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+mockitoKotlin = { group = "com.nhaarman.mockitokotlin2", name = "mockito-kotlin", version.ref = "mockito" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+recyclerView = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerView" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofitConverter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofitConverter" }
+soloader = { group = "com.facebook.soloader", name = "soloader", version.ref = "soloader" }
+swipeRefreshLayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swipeRefresh" }
+threeTenAndroid = { group = "com.jakewharton.threetenabp", name = "threetenabp", version.ref = "threeTen" }
+viewModel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "lifecycle" }
+viewModelKtx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }

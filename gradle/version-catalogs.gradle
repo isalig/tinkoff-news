@@ -1,0 +1,12 @@
+enableFeaturePreview("VERSION_CATALOGS")
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        create("jetbrains") {
+            from(files("versions/jetbrains-versions.toml"))
+        }
+        create("libraries") {
+            from(files("versions/library-versions.toml"))
+        }
+    }
+}

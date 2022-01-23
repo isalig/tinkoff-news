@@ -1,3 +1,5 @@
+apply from: 'gradle/version-catalogs.gradle'
+
 rootProject.name='tjnews'
 
 include ':app'

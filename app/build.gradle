@@ -4,15 +4,15 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion Versions.compileSdk
-    buildToolsVersion Versions.buildTools
+    compileSdkVersion configVersions.compileSdk
+    buildToolsVersion configVersions.buildTools
 
     defaultConfig {
         applicationId "io.aiico.tnews"
-        minSdkVersion Versions.minSdk
-        targetSdkVersion Versions.targetSdk
-        versionCode Versions.versionCode
-        versionName Versions.versionName
+        minSdkVersion configVersions.minSdk
+        targetSdkVersion configVersions.targetSdk
+        versionCode configVersions.versionCode
+        versionName configVersions.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -25,12 +25,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = Versions.java
-        targetCompatibility = Versions.java
+        sourceCompatibility = "1.8"
+        targetCompatibility = "1.8"
     }
 
     kotlinOptions {
-        jvmTarget = Versions.java.toString()
+        jvmTarget = "1.8"
     }
 
 }
@@ -43,27 +43,27 @@ dependencies {
     implementation project(':data')
     implementation project(':domain')
 
-    implementation Dependencies.appCompat
-    implementation Dependencies.coroutines
-    implementation Dependencies.dagger
-    implementation Dependencies.fragmentKtx
-    implementation Dependencies.ktxCore
-    implementation Dependencies.loggingInterceptor
-    implementation Dependencies.material
-    implementation Dependencies.okhttp
-    implementation Dependencies.recyclerView
-    implementation Dependencies.swipeRefreshLayout
-    implementation Dependencies.threeTenAndroid
-    implementation Dependencies.viewModel
-    implementation Dependencies.viewModelKtx
+    implementation libraries.appCompat
+    implementation libraries.coroutines
+    implementation libraries.dagger
+    implementation libraries.fragmentKtx
+    implementation libraries.ktxCore
+    implementation libraries.loggingInterceptor
+    implementation libraries.material
+    implementation libraries.okhttp
+    implementation libraries.recyclerView
+    implementation libraries.swipeRefreshLayout
+    implementation libraries.threeTenAndroid
+    implementation libraries.viewModel
+    implementation libraries.viewModelKtx
 
-    kapt Dependencies.daggerCompiler
+    kapt libraries.daggerCompiler
 
-    testImplementation Dependencies.junit
-    testImplementation Dependencies.mockitoKotlin
+    testImplementation libraries.junit
+    testImplementation libraries.mockitoKotlin
 
 //    releaseImplementation Dependencies.flipperNoop
-    implementation Dependencies.flipper
-    implementation Dependencies.soloader
-    implementation Dependencies.flipperNetworkPlugin
+    implementation libraries.flipper
+    implementation libraries.soloader
+    implementation libraries.flipperNetworkPlugin
 }

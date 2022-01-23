@@ -6,12 +6,12 @@ plugins {
 dependencies {
     implementation project(':domain')
 
-    implementation Dependencies.coroutines
-    implementation Dependencies.dagger
-    implementation Dependencies.javaxInject
-    implementation Dependencies.json
-    implementation Dependencies.okhttp
-    implementation Dependencies.retrofit
-    implementation Dependencies.retrofitConverter
-    implementation Dependencies.threeTenAndroid
+    implementation libraries.coroutines
+    implementation libraries.dagger
+    implementation libraries.javaxInject
+    implementation libraries.json
+    implementation libraries.okhttp
+    implementation libraries.retrofit
+    implementation libraries.retrofitConverter
+    implementation libraries.threeTenAndroid
 }
