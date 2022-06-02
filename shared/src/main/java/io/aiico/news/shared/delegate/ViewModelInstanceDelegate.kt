@@ -1,4 +1,4 @@
-package io.aiico.tnews.presentation.delegate
+package io.aiico.news.shared.delegate
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels

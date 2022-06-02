@@ -1,4 +1,4 @@
-package io.aiico.tnews.presentation.delegate
+package io.aiico.news.shared.delegate
 
 import android.os.Bundle
 import androidx.core.os.bundleOf

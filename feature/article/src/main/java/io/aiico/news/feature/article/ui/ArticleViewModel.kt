@@ -1,4 +1,4 @@
-package io.aiico.tnews.presentation.article
+package io.aiico.news.feature.article.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

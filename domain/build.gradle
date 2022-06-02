@@ -3,6 +3,7 @@ plugins {
 }
 
 dependencies {
+    implementation libraries.coroutines
     implementation libraries.dagger
     implementation libraries.javaxInject
     implementation libraries.threeTenAndroid

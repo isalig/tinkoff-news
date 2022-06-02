@@ -6,15 +6,15 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import io.aiico.news.shared.delegate.viewModelInstance
+import io.aiico.news.shared.getSize
+import io.aiico.news.shared.launchWhenStarted
+import io.aiico.news.shared.showToast
 import io.aiico.tnews.R
 import io.aiico.tnews.presentation.NewsApp
-import io.aiico.tnews.presentation.delegate.viewModelInstance
 import io.aiico.tnews.presentation.feed.adapter.FeedAdapter
-import io.aiico.tnews.presentation.getSize
-import io.aiico.tnews.presentation.launchWhenStarted
 import io.aiico.tnews.presentation.shared.ItemsVerticalOffsetDecoration
 import io.aiico.tnews.presentation.shared.ItemsVerticalOffsetDecoration.OffsetDirection
-import io.aiico.tnews.presentation.showToast
 import kotlinx.android.synthetic.main.fragment_feed.*
 import kotlinx.coroutines.flow.onEach
 

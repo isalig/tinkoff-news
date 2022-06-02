@@ -3,7 +3,7 @@ package io.aiico.tnews.presentation
 import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
-import io.aiico.tnews.presentation.article.ArticleComponent.ArticleDependencies
+import io.aiico.news.feature.article.di.ArticleComponent
 import io.aiico.tnews.presentation.di.module.ApiModule
 import io.aiico.tnews.presentation.di.module.AppModule
 import io.aiico.tnews.presentation.di.module.DataModule
@@ -22,7 +22,7 @@ import javax.inject.Singleton
     DataModule::class
   ]
 )
-interface AppComponent : FeedDependencies, ArticleDependencies {
+interface AppComponent : FeedDependencies, ArticleComponent.ArticleDependencies {
 
   val newsNavigator: NewsNavigator
 

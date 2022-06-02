@@ -9,7 +9,8 @@
 
   <com.google.android.material.appbar.AppBarLayout
     android:layout_width="match_parent"
-    android:layout_height="?actionBarSize">
+    android:layout_height="?actionBarSize"
+    android:backgroundTint="?colorPrimary">
 
     <androidx.appcompat.widget.Toolbar
       android:id="@+id/detailsToolbar"
@@ -17,7 +18,7 @@
       android:layout_height="match_parent"
       android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
       app:navigationIcon="@drawable/ic_back"
-      app:title="@string/Details" />
+      app:title="@string/details" />
 
   </com.google.android.material.appbar.AppBarLayout>
 

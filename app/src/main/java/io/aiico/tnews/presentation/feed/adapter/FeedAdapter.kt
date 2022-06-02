@@ -3,8 +3,8 @@ package io.aiico.tnews.presentation.feed.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.aiico.news.domain.model.Article
+import io.aiico.news.shared.inflateView
 import io.aiico.tnews.R
-import io.aiico.tnews.presentation.inflateView
 
 class FeedAdapter(private inline val onClick: (id: String) -> Unit) : RecyclerView.Adapter<FeedViewHolder>() {
 

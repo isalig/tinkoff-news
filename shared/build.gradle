@@ -1,0 +1,14 @@
+plugins {
+  id 'com.android.library'
+  id 'org.jetbrains.kotlin.android'
+}
+
+android {
+  compileSdkVersion configVersions.compileSdk
+  buildToolsVersion configVersions.buildTools
+}
+
+dependencies {
+  implementation libraries.fragmentKtx
+  implementation libraries.viewModel
+}

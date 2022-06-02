@@ -1,9 +1,10 @@
-package io.aiico.tnews.presentation.article
+package io.aiico.news.feature.article.di
 
 import dagger.BindsInstance
 import dagger.Component
 import io.aiico.news.domain.usecase.GetArticleUseCase
-import io.aiico.tnews.presentation.article.ArticleComponent.ArticleDependencies
+import io.aiico.news.feature.article.di.ArticleComponent.ArticleDependencies
+import io.aiico.news.feature.article.ui.ArticleViewModel
 
 @Component(dependencies = [ArticleDependencies::class])
 interface ArticleComponent {

@@ -1,4 +1,4 @@
-package io.aiico.tnews.presentation
+package io.aiico.news.shared
 
 import android.content.Context
 import android.text.Html
