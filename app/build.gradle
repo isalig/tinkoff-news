@@ -43,6 +43,7 @@ dependencies {
     implementation project(':data')
     implementation project(':domain')
     implementation project(':feature:article')
+    implementation project(':feature:feed')
     implementation project(':shared')
 
     implementation libraries.appCompat

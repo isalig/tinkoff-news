@@ -1,4 +1,4 @@
-package io.aiico.tnews.presentation.feed
+package io.aiico.news.feature.feed.ui
 
 import io.aiico.news.domain.model.Article
 

@@ -1,12 +1,14 @@
 package io.aiico.news.feature.article.ui
 
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import io.aiico.news.feature.article.R
+import io.aiico.news.shared.delegate.argument
 
 class ArticleFragment : Fragment(R.layout.fragment_detailed_news) {
 
 //  private lateinit var component: ArticleComponent
-//  private val articleId: String by argument(KEY_NEWS_ID)
+  private val articleId: String by argument(KEY_NEWS_ID)
 //
 //  private val viewModel by viewModelInstance {
 //    component.factory.create(articleId)
@@ -54,11 +56,11 @@ class ArticleFragment : Fragment(R.layout.fragment_detailed_news) {
 //    }
 //  }
 //
-//  companion object {
-//    private const val KEY_NEWS_ID = "news_id"
-//
-//    fun newInstance(id: String) = ArticleFragment().apply {
-//      arguments = bundleOf(KEY_NEWS_ID to id)
-//    }
-//  }
+  companion object {
+    private const val KEY_NEWS_ID = "news_id"
+
+    fun newInstance(id: String) = ArticleFragment().apply {
+      arguments = bundleOf(KEY_NEWS_ID to id)
+    }
+  }
 }

@@ -10,13 +10,13 @@
   <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="@dimen/indent_l"
-    android:paddingTop="@dimen/indent_s"
-    android:paddingEnd="@dimen/indent_l"
-    android:paddingBottom="@dimen/indent_s"
-    android:text="@string/feed_title"
-    android:textAppearance="@style/TextAppearance.Title1"
     />
+<!--    android:paddingStart="@dimen/indent_l"-->
+<!--    android:paddingTop="@dimen/indent_s"-->
+<!--    android:paddingEnd="@dimen/indent_l"-->
+<!--    android:paddingBottom="@dimen/indent_s"-->
+<!--    android:text="@string/feed_title"-->
+<!--    android:textAppearance="@style/TextAppearance.Title1"-->
 
   <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     android:id="@+id/titlesRefreshLayout"
@@ -32,13 +32,13 @@
       android:layout_height="match_parent"
       android:clipChildren="false"
       android:clipToPadding="false"
-      android:paddingStart="@dimen/indent_l"
-      android:paddingEnd="@dimen/indent_l"
-      android:paddingBottom="@dimen/indent_l"
       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
       tools:itemCount="5"
       tools:listitem="@layout/list_item_news_title"
       />
+<!--      android:paddingStart="@dimen/indent_l"-->
+<!--      android:paddingEnd="@dimen/indent_l"-->
+<!--      android:paddingBottom="@dimen/indent_l"-->
 
   </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -65,8 +65,8 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="8dp"
-      android:text="@string/retry"
       />
+<!--      android:text="@string/retry"-->
 
   </LinearLayout>
 
@@ -75,10 +75,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:text="@string/loading"
     android:textAppearance="@style/TextAppearance.AppCompat.Title"
     android:visibility="gone"
     />
+<!--    android:text="@string/loading"-->
 
   <LinearLayout
     android:id="@+id/listPlaceholderLayout"
@@ -93,17 +93,17 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:gravity="center"
-      android:text="@string/titles_empty_list_placeholder"
       android:textAppearance="@style/TextAppearance.AppCompat.Title"
       />
+<!--      android:text="@string/titles_empty_list_placeholder"-->
 
     <Button
       android:id="@+id/retryEmptyButton"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="8dp"
-      android:text="@string/retry"
       />
+<!--      android:text="@string/retry"-->
 
   </LinearLayout>
 
