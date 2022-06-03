@@ -1,6 +1,6 @@
 package io.aiico.news.feature.article.ui
 
-import io.aiico.news.domain.model.Article
+import io.aiico.news.shared.editorial.domain.model.Article
 
 sealed class ViewState
 

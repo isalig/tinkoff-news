@@ -1,7 +1,6 @@
 package io.aiico.news.feature.feed.di
 
 import dagger.Component
-import io.aiico.news.domain.usecase.GetArticlesListUseCase
 import io.aiico.news.feature.feed.di.FeedComponent.FeedDependencies
 import io.aiico.news.feature.feed.ui.FeedViewModel
 
@@ -22,6 +21,6 @@ interface FeedComponent {
 
   interface FeedDependencies {
 //    fun navigator(): NewsNavigator
-    fun getArticlesUseCase(): GetArticlesListUseCase
+    fun getArticlesUseCase(): io.aiico.news.shared.editorial.domain.usecase.GetArticlesListUseCase
   }
 }

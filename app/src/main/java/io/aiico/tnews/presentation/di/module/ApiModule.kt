@@ -2,8 +2,6 @@ package io.aiico.tnews.presentation.di.module
 
 import dagger.Module
 import dagger.Provides
-import io.aiico.news.data.ArticlesApiFactory
-import io.aiico.news.data.api.ArticlesApi
 import okhttp3.OkHttpClient
 import javax.inject.Singleton
 
@@ -13,5 +11,5 @@ object ApiModule {
   @Singleton
   @Provides
   @JvmStatic
-  fun provideArticlesApi(client: OkHttpClient): ArticlesApi = ArticlesApiFactory.create(client)
+  fun provideArticlesApi(client: OkHttpClient): io.aiico.news.shared.editorial.data.api.ArticlesApi = io.aiico.news.shared.editorial.data.ArticlesApiFactory.create(client)
 }

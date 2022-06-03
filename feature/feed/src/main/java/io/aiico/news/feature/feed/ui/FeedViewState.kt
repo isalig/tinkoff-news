@@ -1,6 +1,6 @@
 package io.aiico.news.feature.feed.ui
 
-import io.aiico.news.domain.model.Article
+import io.aiico.news.shared.editorial.domain.model.Article
 
 sealed class FeedViewState(
     val titles: List<Article> = emptyList(),

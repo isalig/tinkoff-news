@@ -2,7 +2,7 @@ package io.aiico.news.feature.feed.ui.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import io.aiico.news.domain.model.Article
+import io.aiico.news.shared.editorial.domain.model.Article
 import org.threeten.bp.format.DateTimeFormatter
 
 class FeedViewHolder(

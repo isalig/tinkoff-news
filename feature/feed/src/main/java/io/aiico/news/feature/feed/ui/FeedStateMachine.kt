@@ -1,6 +1,6 @@
 package io.aiico.news.feature.feed.ui
 
-import io.aiico.news.domain.model.Article
+import io.aiico.news.shared.editorial.domain.model.Article
 import javax.inject.Inject
 
 class FeedStateMachine @Inject constructor() {

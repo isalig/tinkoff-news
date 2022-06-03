@@ -4,13 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
-import io.aiico.news.domain.usecase.GetArticlesListUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class FeedViewModel @AssistedInject constructor(
-  private val getArticles: GetArticlesListUseCase,
+  private val getArticles: io.aiico.news.shared.editorial.domain.usecase.GetArticlesListUseCase,
 //  private val navigator: NewsNavigator,
   private val stateMachine: FeedStateMachine
 ) : ViewModel() {
