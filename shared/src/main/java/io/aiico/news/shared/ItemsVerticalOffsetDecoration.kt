@@ -1,4 +1,4 @@
-package io.aiico.tnews.presentation.shared
+package io.aiico.news.shared
 
 import android.graphics.Rect
 import android.view.View
@@ -15,7 +15,7 @@ class ItemsVerticalOffsetDecoration(
     val adapterPosition = parent.getChildAdapterPosition(view)
     if (adapterPosition < 0) return
     when (offsetDirection) {
-      OffsetDirection.TOP    -> addTopOffset(outRect, adapterPosition)
+      OffsetDirection.TOP -> addTopOffset(outRect, adapterPosition)
       OffsetDirection.BOTTOM -> addBottomOffset(outRect, parent, adapterPosition)
     }
   }

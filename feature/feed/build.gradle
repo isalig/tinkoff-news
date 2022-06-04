@@ -7,9 +7,14 @@ plugins {
 android {
   compileSdkVersion configVersions.compileSdk
   buildToolsVersion configVersions.buildTools
+
+  buildFeatures {
+    viewBinding true
+  }
 }
 
 dependencies {
+  implementation project(':design-system')
   implementation project(':shared')
   implementation project(':shared:editorial')
 

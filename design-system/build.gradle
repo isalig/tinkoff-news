@@ -1,6 +1,6 @@
 plugins {
   id 'com.android.library'
-  id 'org.jetbrains.kotlin.android'
+  id 'kotlin-android'
 }
 
 android {
@@ -9,7 +9,5 @@ android {
 }
 
 dependencies {
-  implementation libraries.fragmentKtx
-  implementation libraries.recyclerView
-  implementation libraries.viewModel
+  implementation libraries.material
 }

@@ -3,6 +3,7 @@ apply from: 'gradle/version-catalogs.gradle'
 rootProject.name='tjnews'
 
 include ':app'
+include ':design-system'
 include ':feature:article'
 include ':feature:feed'
 include ':shared'
