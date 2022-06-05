@@ -1,12 +1,13 @@
 package io.aiico.news.feature.feed.ui.adapter
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import io.aiico.news.feature.feed.R
+import io.aiico.news.feature.feed.databinding.ListItemNewsTitleBinding
 import io.aiico.news.shared.editorial.domain.model.Article
-import io.aiico.news.shared.inflateView
 
-class FeedAdapter(private inline val onClick: (id: String) -> Unit) : RecyclerView.Adapter<FeedViewHolder>() {
+class FeedAdapter(private inline val onClick: (id: String) -> Unit) :
+  RecyclerView.Adapter<FeedViewHolder>() {
 
   private var titles: List<Article> = emptyList()
 
@@ -17,8 +18,10 @@ class FeedAdapter(private inline val onClick: (id: String) -> Unit) : RecyclerVi
     else notifyItemRangeChanged(0, titles.size)
   }
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder =
-    FeedViewHolder(parent.inflateView(R.layout.list_item_news_title))
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
+    val layoutInflater = LayoutInflater.from(parent.context)
+    return FeedViewHolder(ListItemNewsTitleBinding.inflate(layoutInflater, parent, false))
+  }
 
   override fun onViewAttachedToWindow(holder: FeedViewHolder) {
     holder.itemView.setOnClickListener {

@@ -10,6 +10,7 @@ import io.aiico.news.feature.article.di.ArticleComponent
 import io.aiico.news.shared.asSpannedHtml
 import io.aiico.news.shared.delegate.argument
 import io.aiico.news.shared.delegate.viewModelInstance
+import io.aiico.news.shared.di.findDependencies
 import io.aiico.news.shared.editorial.domain.model.Article
 import io.aiico.news.shared.launchWhenStarted
 import io.aiico.news.shared.showToast
@@ -28,10 +29,7 @@ class ArticleFragment : Fragment(R.layout.fragment_detailed_news) {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-//    component = ArticleComponent.create(
-//      requireNotNull(requireArguments().getString(KEY_NEWS_ID)),
-//      (requireActivity().application as NewsApp).appComponent
-//    )
+    component = ArticleComponent.create(articleId, findDependencies())
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

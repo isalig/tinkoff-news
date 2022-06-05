@@ -44,6 +44,7 @@ dependencies {
     implementation project(':feature:article')
     implementation project(':feature:feed')
     implementation project(':shared')
+    implementation project(':shared:di')
     implementation project(':shared:editorial')
 
     implementation libraries.appCompat
@@ -65,7 +66,6 @@ dependencies {
     testImplementation libraries.junit
     testImplementation libraries.mockitoKotlin
 
-//    releaseImplementation Dependencies.flipperNoop
     implementation libraries.flipper
     implementation libraries.soloader
     implementation libraries.flipperNetworkPlugin

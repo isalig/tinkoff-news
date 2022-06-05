@@ -1,6 +1,8 @@
-package io.aiico.tnews.presentation.navigation
+package io.aiico.tnews.ui.navigation
 
-class NewsNavigator {
+import io.aiico.news.feature.feed.navigation.FeedRouter
+
+class NewsNavigator : FeedRouter {
 
   private var router: NewsRouter? = null
 
@@ -16,7 +18,7 @@ class NewsNavigator {
     router?.showFeed()
   }
 
-  fun showArticle(newsId: String) {
-    router?.showArticle(newsId)
+  override fun showArticle(id: String) {
+    router?.showArticle(id)
   }
 }

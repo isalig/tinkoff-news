@@ -1,4 +1,4 @@
-package io.aiico.tnews.presentation.di.module
+package io.aiico.tnews.ui.di.module
 
 import dagger.Module
 import dagger.Provides

@@ -4,13 +4,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
+import io.aiico.news.feature.feed.navigation.FeedRouter
+import io.aiico.news.shared.editorial.domain.usecase.GetArticlesListUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class FeedViewModel @AssistedInject constructor(
-  private val getArticles: io.aiico.news.shared.editorial.domain.usecase.GetArticlesListUseCase,
-//  private val navigator: NewsNavigator,
+  private val getArticles: GetArticlesListUseCase,
+  private val feedRouter: FeedRouter,
   private val stateMachine: FeedStateMachine
 ) : ViewModel() {
 
@@ -21,8 +23,8 @@ class FeedViewModel @AssistedInject constructor(
     loadNewsTitles()
   }
 
-  fun onTitleClick(titleId: String) {
-//    navigator.showArticle(titleId)
+  fun onTitleClick(id: String) {
+    feedRouter.showArticle(id)
   }
 
   fun onRefresh() {

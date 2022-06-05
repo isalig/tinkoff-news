@@ -1,0 +1,13 @@
+plugins {
+  id 'com.android.library'
+  id 'kotlin-android'
+}
+
+android {
+  compileSdkVersion configVersions.compileSdk
+  buildToolsVersion configVersions.buildTools
+}
+
+dependencies {
+  implementation libraries.appCompat
+}

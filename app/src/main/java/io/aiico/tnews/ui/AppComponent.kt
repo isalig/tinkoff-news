@@ -1,15 +1,15 @@
-package io.aiico.tnews.presentation
+package io.aiico.tnews.ui
 
 import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
 import io.aiico.news.feature.article.di.ArticleComponent
 import io.aiico.news.feature.feed.di.FeedComponent
-import io.aiico.tnews.presentation.di.module.ApiModule
-import io.aiico.tnews.presentation.di.module.AppModule
-import io.aiico.tnews.presentation.di.module.DataModule
-import io.aiico.tnews.presentation.di.module.NavigationModule
-import io.aiico.tnews.presentation.navigation.NewsNavigator
+import io.aiico.tnews.ui.di.module.ApiModule
+import io.aiico.tnews.ui.di.module.AppModule
+import io.aiico.tnews.ui.di.module.DataModule
+import io.aiico.tnews.ui.di.module.NavigationModule
+import io.aiico.tnews.ui.navigation.NewsNavigator
 import okhttp3.Interceptor
 import javax.inject.Singleton
 

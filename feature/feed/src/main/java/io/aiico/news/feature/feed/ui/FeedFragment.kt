@@ -13,6 +13,7 @@ import io.aiico.news.feature.feed.ui.adapter.FeedAdapter
 import io.aiico.news.shared.ItemsVerticalOffsetDecoration
 import io.aiico.news.shared.ItemsVerticalOffsetDecoration.OffsetDirection
 import io.aiico.news.shared.delegate.viewModelInstance
+import io.aiico.news.shared.di.findDependencies
 import io.aiico.news.shared.getSize
 import io.aiico.news.shared.launchWhenStarted
 import io.aiico.news.shared.showToast
@@ -32,13 +33,14 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
     viewModel.onTitleClick(id)
   }
 
-//  override fun onCreate(savedInstanceState: Bundle?) {
-//    super.onCreate(savedInstanceState)
-//    component = FeedComponent.create((requireActivity().application as NewsApp).appComponent)
-//  }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    component = FeedComponent.create(findDependencies())
+  }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
+    binding = FragmentFeedBinding.bind(view)
     initTitlesRecyclerView()
     binding?.run {
       titlesRefreshLayout.setOnRefreshListener {

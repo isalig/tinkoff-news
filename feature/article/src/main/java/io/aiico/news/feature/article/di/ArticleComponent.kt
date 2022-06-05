@@ -4,6 +4,8 @@ import dagger.BindsInstance
 import dagger.Component
 import io.aiico.news.feature.article.di.ArticleComponent.ArticleDependencies
 import io.aiico.news.feature.article.ui.ArticleViewModel
+import io.aiico.news.shared.di.Dependencies
+import io.aiico.news.shared.editorial.domain.usecase.GetArticleUseCase
 
 @Component(dependencies = [ArticleDependencies::class])
 interface ArticleComponent {
@@ -21,7 +23,7 @@ interface ArticleComponent {
       DaggerArticleComponent.factory().create(newsId, dependencies)
   }
 
-  interface ArticleDependencies {
-    fun getArticleUseCase(): io.aiico.news.shared.editorial.domain.usecase.GetArticleUseCase
+  interface ArticleDependencies : Dependencies {
+    fun getArticleUseCase(): GetArticleUseCase
   }
 }

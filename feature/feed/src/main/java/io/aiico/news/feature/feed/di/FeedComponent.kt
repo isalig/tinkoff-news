@@ -2,7 +2,10 @@ package io.aiico.news.feature.feed.di
 
 import dagger.Component
 import io.aiico.news.feature.feed.di.FeedComponent.FeedDependencies
+import io.aiico.news.feature.feed.navigation.FeedRouter
 import io.aiico.news.feature.feed.ui.FeedViewModel
+import io.aiico.news.shared.di.Dependencies
+import io.aiico.news.shared.editorial.domain.usecase.GetArticlesListUseCase
 
 @Component(dependencies = [FeedDependencies::class])
 interface FeedComponent {
@@ -19,8 +22,8 @@ interface FeedComponent {
       DaggerFeedComponent.factory().create(dependencies)
   }
 
-  interface FeedDependencies {
-//    fun navigator(): NewsNavigator
-    fun getArticlesUseCase(): io.aiico.news.shared.editorial.domain.usecase.GetArticlesListUseCase
+  interface FeedDependencies : Dependencies {
+    val getArticlesUseCase: GetArticlesListUseCase
+    val feedRouter: FeedRouter
   }
 }

@@ -1,4 +1,4 @@
-package io.aiico.tnews.presentation
+package io.aiico.tnews.ui
 
 import android.app.Application
 import io.aiico.tnews.FlipperInitializerImpl

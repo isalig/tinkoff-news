@@ -16,6 +16,7 @@ android {
 dependencies {
   implementation project(':design-system')
   implementation project(':shared')
+  implementation project(':shared:di')
   implementation project(':shared:editorial')
 
   implementation libraries.appCompat

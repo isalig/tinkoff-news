@@ -1,4 +1,4 @@
-package io.aiico.tnews.presentation.navigation
+package io.aiico.tnews.ui.navigation
 
 import androidx.fragment.app.FragmentManager
 import io.aiico.news.feature.article.ui.ArticleFragment
